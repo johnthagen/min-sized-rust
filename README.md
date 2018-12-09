@@ -12,6 +12,8 @@ for binary size instead, Rust provides mechanisms to accomplish this.
 
 # Build in Release Mode
 
+![Minimum Rust: 1.0](https://img.shields.io/badge/Minimum%20Rust%20Version-1.0-brightgreen.svg)
+
 By default, `cargo build` builds the Rust binary in debug mode. Debug mode disables many
 optimizations, which helps debuggers (and IDEs that run them) provide a better debugging
 experience. Debug binaries can be 30% or more larger than release binaries.
@@ -23,6 +25,8 @@ $ cargo build --release
 ```
 
 # `strip` Symbols from Binary
+
+![OS: *nix](https://img.shields.io/badge/OS-*nix-brightgreen.svg)
 
 By default on Linux and macOS, symbol information is included in the compiled `.elf` file. This
 information is not needed to properly execute the binary.
@@ -47,6 +51,8 @@ opt-level = 'z'  # Optimize for size.
 ```
 
 # Enable Link Time Optimization (LTO)
+
+![Minimum Rust: 1.0](https://img.shields.io/badge/Minimum%20Rust%20Version-1.0-brightgreen.svg)
 
 Be default, compilation units are compiled and optimized in isolation. 
 [LTO](https://llvm.org/docs/LinkTimeOptimization.html) instructs the linker to optimize at the
