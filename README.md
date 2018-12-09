@@ -64,8 +64,9 @@ To improve performance, Rust bundles
 defeault system allocator, on some platforms. Bundling jemalloc does add around 200KB to the
 resulting binary, however.
 
-> Note that per https://github.com/rust-lang/rust/issues/36963, it will soon be the default on
-stable to use the system allocator, at which point these steps will not be necessary.
+> Note that per https://github.com/rust-lang/rust/issues/36963#issuecomment-445553110, 
+Rust 1.32 stable will soon default to use the system allocator, at which point these 
+steps will no longer be necessary.
 
 Add this code to the top of `main.rs`:
 
