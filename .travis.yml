@@ -13,3 +13,6 @@ cache: cargo
 
 script:
   - cargo build --verbose --all
+
+notifications:
+  email: false
