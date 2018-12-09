@@ -1,0 +1,12 @@
+[package]
+name = "min-sized-rust"
+version = "0.1.0"
+authors = ["johnthagen <johnthagen@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[profile.release]
+opt-level = 'z'  # Optimize for size.
+lto = true       # Enable Link Time Optimization
+panic = 'abort'  # Abort on panic
