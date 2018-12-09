@@ -1,0 +1,3 @@
+# Xargo.toml
+[dependencies.std]
+features = ["force_alloc_system"] # Disable jemalloc the Xargo way.

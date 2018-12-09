@@ -107,6 +107,75 @@ Enable this in `Cargo.toml`:
 panic = 'abort'
 ```
 
+# Optimize `std` with Xargo
+
+![Nightly-2018-10-31](https://img.shields.io/badge/Rust%20Version-nightly_2018/10/31-orange.svg)
+
+> **Note**: [Xargo is currently in maintenance status](https://github.com/japaric/xargo/issues/193),
+  but eventually the features used below should make their way into Cargo.
+
+> **Note**: Sometime in early November, 2018 `nightly` broke the way Xargo is used in this example,
+so the nightly has been pinned.
+
+Rust ships pre-built copies of the standard library (`std`) with its toolchains. This means
+that developers don't need to build `std` every time they build their applications. `std`
+is statically linked into the binary instead.
+
+While this is very convenient there are several drawbacks if a developer is trying to
+aggressively optimize for size.
+
+1. The prebuilt `std` is optimized for speed, not size.
+
+2. It's not possible to remove portions of `std` that are not used in a particular application 
+   (LTO).
+
+This is where [Xargo](https://github.com/japaric/xargo) comes in. Xargo is able to compile
+`std` with your application from the source. It does this with the `rust-src` component that
+`rustup` conveniently provides.
+
+Modify `main.rs`:
+
+```rust
+// Xargo must use a different way to disable jemalloc.
+//use std::alloc::System;
+//
+//#[global_allocator]
+//static A: System = System;
+
+fn main() {
+    println!("Hello, world!");
+}
+```
+
+Add a `Xargo.toml` file to the root of your project 
+(this doesn't replace `Cargo.toml`, just is in addition):
+
+```toml
+# Xargo.toml
+[dependencies.std]
+features = ["force_alloc_system"] # Disable jemalloc the Xargo way.
+```
+
+
+```bash
+$ rustup toolchain install nightly-2018-10-31
+$ rustup default nightly-2018-10-31
+$ rustup component add rust-src
+$ cargo install xargo
+```
+
+```bash
+# Find your host's target triple. 
+$ rustc -vV
+...
+host: x86_64-apple-darwin
+
+# Use that target triple when building with Xargo.
+$ xargo build --target x86_64-apple-darwin --release
+```
+
+Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 51KB.
+
 # References
 
 - [Why is a Rust executable large? - 2016](https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html)
