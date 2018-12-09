@@ -156,6 +156,7 @@ Add a `Xargo.toml` file to the root of your project
 features = ["force_alloc_system"] # Disable jemalloc the Xargo way.
 ```
 
+Install the appropriate toolchain and Xargo:
 
 ```bash
 $ rustup toolchain install nightly-2018-10-31
@@ -163,6 +164,8 @@ $ rustup default nightly-2018-10-31
 $ rustup component add rust-src
 $ cargo install xargo
 ```
+
+Build using Xargo:
 
 ```bash
 # Find your host's target triple. 
