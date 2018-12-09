@@ -81,6 +81,26 @@ use std::alloc::System;
 static A: System = System;
 ```
 
+# Abort on Panic
+
+![Minimum Rust: 1.10](https://img.shields.io/badge/Minimum%20Rust%20Version-1.10-brightgreen.svg)
+
+> **Note**: Up to this point, the features discussed to reduce binary size did not have an
+impact on the behaviour of the program (only its execution speed). This feature does
+have an impact on behavior.
+
+By default, when Rust code encounters a situation when it must call `panic!()`, it unwinds the
+stack and produces a helpful backtrace. The unwinding code, however, does require extra binary
+size. `rustc` can be instructed to abort immediately rather than unwind, which removes the
+need for this extra unwinding code.
+
+Enable this in `Cargo.toml`:
+
+```toml
+[profile.release]
+panic = 'abort'
+```
+
 <!-- Badges -->
 [travis-build-status]: https://travis-ci.org/johnthagen/min-sized-rust
 [travis-build-status-svg]: https://travis-ci.org/johnthagen/min-sized-rust.svg?branch=master
