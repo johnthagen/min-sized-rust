@@ -101,6 +101,10 @@ Enable this in `Cargo.toml`:
 panic = 'abort'
 ```
 
+# References
+
+- [Why is a Rust executable large? - 2016](https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html)
+
 <!-- Badges -->
 [travis-build-status]: https://travis-ci.org/johnthagen/min-sized-rust
 [travis-build-status-svg]: https://travis-ci.org/johnthagen/min-sized-rust.svg?branch=master
