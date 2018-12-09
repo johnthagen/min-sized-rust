@@ -34,6 +34,8 @@ $ strip target/release/min-sized-rust
 
 # Optimize For Size
 
+![Minimum Rust: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
+
 As mentioned earlier, the Rust compiler, `rustc`, defaults its optimization level to `O2`,
 which optimizes the binary for speed. To instruct `rustc` to optimize for minimal binary
 size, use the `z` optimization level in 
@@ -58,6 +60,8 @@ lto = true
 ```
 
 # Disable Jemalloc
+
+![Minimum Rust: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
 
 To improve performance, Rust bundles 
 [jemalloc](https://github.com/jemalloc/jemalloc), an allocator that often outperforms the
