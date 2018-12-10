@@ -117,6 +117,8 @@ panic = 'abort'
 > **Note**: Sometime in early November, 2018 `nightly` broke the way Xargo is used in this example,
 so the nightly has been pinned.
 
+Example project is located in the [xargo](xargo) folder.
+
 Rust ships pre-built copies of the standard library (`std`) with its toolchains. This means
 that developers don't need to build `std` every time they build their applications. `std`
 is statically linked into the binary instead.

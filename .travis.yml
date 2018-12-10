@@ -3,15 +3,23 @@ language: rust
 matrix:
   include:
     - os: linux
+      rust: 1.28.0
+    - os: linux
       rust: stable
     - os: osx
       rust: stable
     - os: windows
       rust: stable
+    - os: linux
+      rust: nightly-2018-10-31
+      env: CI_BUILD_TYPE="XARGO"
 
 cache: cargo
 
 script:
+  - bash -c 'if [[ "$CI_BUILD_TYPE" == "XARGO" ]]; then
+      cd xargo;
+    fi'
   - cargo build --verbose --all
 
 notifications:
