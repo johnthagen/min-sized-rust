@@ -3,16 +3,28 @@ language: rust
 matrix:
   include:
     - os: linux
+      rust: 1.28.0
+    - os: linux
       rust: stable
     - os: osx
       rust: stable
     - os: windows
       rust: stable
+    - os: linux
+      rust: nightly-2018-10-31
+      env: CI_BUILD_TYPE="XARGO"
 
 cache: cargo
 
 script:
-  - cargo build --verbose --all
+  - bash -c 'if [[ "$CI_BUILD_TYPE" == "XARGO" ]]; then
+      cd xargo;
+      rustup component add rust-src;
+      cargo install xargo;
+      xargo build --target x86_64-unknown-linux-gnu --release --verbose;
+    else
+      cargo build --release --verbose --all;
+    fi'
 
 notifications:
   email: false
