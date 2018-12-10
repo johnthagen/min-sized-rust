@@ -1,0 +1,4 @@
+[[package]]
+name = "min-sized-rust-xargo"
+version = "0.1.0"
+

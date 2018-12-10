@@ -21,9 +21,9 @@ script:
       cd xargo;
       rustup component add rust-src;
       cargo install xargo;
-      xargo build --target x86_64-unknown-linux-gnu --verbose;
+      xargo build --target x86_64-unknown-linux-gnu --release --verbose;
     else
-      cargo build --verbose --all;
+      cargo build --release --verbose --all;
     fi'
 
 notifications:
