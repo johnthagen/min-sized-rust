@@ -19,6 +19,8 @@ cache: cargo
 script:
   - bash -c 'if [[ "$CI_BUILD_TYPE" == "XARGO" ]]; then
       cd xargo;
+      rustup component add rust-src;
+      cargo install xargo;
       xargo build --target x86_64-unknown-linux-gnu --verbose;
     else
       cargo build --verbose --all;
