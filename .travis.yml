@@ -19,8 +19,10 @@ cache: cargo
 script:
   - bash -c 'if [[ "$CI_BUILD_TYPE" == "XARGO" ]]; then
       cd xargo;
+      xargo build --target x86_64-unknown-linux-gnu --verbose;
+    else
+      cargo build --verbose --all;
     fi'
-  - cargo build --verbose --all
 
 notifications:
   email: false
