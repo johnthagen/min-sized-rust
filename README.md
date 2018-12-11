@@ -183,6 +183,8 @@ Remember to `strip` the resulting executable. On macOS, the final binary size is
 
 # Removing `libstd` with `![no_std]`
 
+![Minimum Rust: 1.30](https://img.shields.io/badge/Minimum%20Rust%20Version-1.30-brightgreen.svg)
+
 > Example project is located in the [`no_std`](no_std) folder.
 
 Up until this point, our application with using the Rust standard library, `libstd`. `libstd`
