@@ -117,7 +117,7 @@ panic = 'abort'
 > **Note**: Sometime in early November, 2018 `nightly` broke the way Xargo is used in this example,
 so the nightly has been pinned.
 
-Example project is located in the [xargo](xargo) folder.
+> Example project is located in the [`xargo`](xargo) folder.
 
 Rust ships pre-built copies of the standard library (`std`) with its toolchains. This means
 that developers don't need to build `std` every time they build their applications. `std`
@@ -181,9 +181,56 @@ $ xargo build --target x86_64-apple-darwin --release
 
 Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 51KB.
 
+# Removing `libstd` with `![no_std]`
+
+> Example project is located in the [`no_std`](no_std) folder.
+
+Up until this point, our application with using the Rust standard library, `libstd`. `libstd`
+provides many convenient, well tested cross platform APIs and data types. But if a user wants
+to reduce binary size to an equivalent C program size, it is possible to depend only on `libc`.
+
+It's important to understand that there are many drawbacks to this approach. For one, you'll
+likely need to write a lot of `unsafe` and lose access to a majority of Rust crates
+that depend on `libstd`. Nevertheless, it is one (albeit extreme) option to reducing binary size.
+
+A `strip`ed binary built this way is around 8KB.
+
+```rust
+#![no_std]
+#![no_main]
+
+extern crate libc;
+
+#[no_mangle]
+pub extern "C" fn main(_argc: isize, _argv: *const *const u8) -> isize {
+    // Since we are passing a C string the final null character is mandatory.
+    const HELLO: &'static str = "Hello, world!\n\0";
+    unsafe {
+        libc::printf(HELLO.as_ptr() as *const _);
+    }
+    0
+}
+
+#[panic_handler]
+fn my_panic(_info: &core::panic::PanicInfo) -> ! {
+    loop {}
+}
+```
+
+# TODO
+
+- [`panic_immediate_abort`](https://github.com/rust-lang/rust/pull/55011)
+
+- `codegen-units`
+
+
 # References
 
-- [Why is a Rust executable large? - 2016](https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html)
+- [Why is a Rust executable large? - 2016][why-rust-binary-large]
+
+[why-rust-binary-large]: https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html
+
+- [Freestanding Rust Binary - 2018](https://os.phil-opp.com/freestanding-rust-binary/)
 
 <!-- Badges -->
 [travis-build-status]: https://travis-ci.org/johnthagen/min-sized-rust

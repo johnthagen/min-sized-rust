@@ -13,6 +13,9 @@ matrix:
     - os: linux
       rust: nightly-2018-10-31
       env: CI_BUILD_TYPE="XARGO"
+    - os: linux
+      rust: stable
+      env: CI_BUILD_TYPE="NO_STD"
 
 cache: cargo
 
@@ -22,6 +25,9 @@ script:
       rustup component add rust-src;
       cargo install xargo;
       xargo build --target x86_64-unknown-linux-gnu --release --verbose;
+    elif [[ "$CI_BUILD_TYPE" == "NO_STD" ]]; then
+      cd no_std;
+      cargo build --release --verbose --all;
     else
       cargo build --release --verbose --all;
     fi'

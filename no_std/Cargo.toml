@@ -1,0 +1,17 @@
+[package]
+name = "min-sized-no_std"
+version = "0.1.0"
+authors = ["johnthagen <johnthagen@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+libc = { version = "0.2", default-features = false }
+
+[profile.dev]
+# Must always use panic = "abort" to avoid needing to define the unstable eh_personality lang item.
+panic = "abort"
+
+[profile.release]
+opt-level = 'z'  # Optimize for size.
+lto = true       # Enable Link Time Optimization
+panic = 'abort'  # Abort on panic
