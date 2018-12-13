@@ -41,7 +41,7 @@ $ strip target/release/min-sized-rust
 ![Minimum Rust: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
 
 [Cargo defaults its optimization level to `3` for release builds][cargo-profile],
-which optimizes the binary for speed. To instruct cargo to optimize for minimal binary
+which optimizes the binary for speed. To instruct Cargo to optimize for minimal binary
 size, use the `z` optimization level in 
 [`Cargo.toml`](https://doc.rust-lang.org/cargo/reference/manifest.html):
 
@@ -57,7 +57,7 @@ opt-level = 'z'  # Optimize for size.
 ![Minimum Rust: 1.0](https://img.shields.io/badge/Minimum%20Rust%20Version-1.0-brightgreen.svg)
 
 By default, 
-[cargo instructs compilation units to be compiled and optimized in isolation][cargo-profile]. 
+[Cargo instructs compilation units to be compiled and optimized in isolation][cargo-profile]. 
 [LTO](https://llvm.org/docs/LinkTimeOptimization.html) instructs the linker to optimize at the
 link stage. This can, for example, remove dead code and often times reduces binary size.
 
