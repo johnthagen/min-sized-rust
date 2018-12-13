@@ -40,10 +40,12 @@ $ strip target/release/min-sized-rust
 
 ![Minimum Rust: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
 
-As mentioned earlier, the Rust compiler, `rustc`, defaults its optimization level to `O2`,
-which optimizes the binary for speed. To instruct `rustc` to optimize for minimal binary
+[Cargo defaults its optimization level to `3` for release builds][cargo-profile],
+which optimizes the binary for speed. To instruct cargo to optimize for minimal binary
 size, use the `z` optimization level in 
 [`Cargo.toml`](https://doc.rust-lang.org/cargo/reference/manifest.html):
+
+[cargo-profile]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-profile-sections
 
 ```toml
 [profile.release]
@@ -54,7 +56,8 @@ opt-level = 'z'  # Optimize for size.
 
 ![Minimum Rust: 1.0](https://img.shields.io/badge/Minimum%20Rust%20Version-1.0-brightgreen.svg)
 
-Be default, compilation units are compiled and optimized in isolation. 
+By default, 
+[cargo instructs compilation units to be compiled and optimized in isolation][cargo-profile]. 
 [LTO](https://llvm.org/docs/LinkTimeOptimization.html) instructs the linker to optimize at the
 link stage. This can, for example, remove dead code and often times reduces binary size.
 
@@ -95,10 +98,10 @@ static A: System = System;
 impact on the behaviour of the program (only its execution speed). This feature does
 have an impact on behavior.
 
-By default, when Rust code encounters a situation when it must call `panic!()`, it unwinds the
-stack and produces a helpful backtrace. The unwinding code, however, does require extra binary
-size. `rustc` can be instructed to abort immediately rather than unwind, which removes the
-need for this extra unwinding code.
+[By default][cargo-profile], when Rust code encounters a situation when it must call `panic!()`, 
+it unwinds the stack and produces a helpful backtrace. The unwinding code, however, does require 
+extra binary size. `rustc` can be instructed to abort immediately rather than unwind, which 
+removes the need for this extra unwinding code.
 
 Enable this in `Cargo.toml`:
 
