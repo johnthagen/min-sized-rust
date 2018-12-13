@@ -1,0 +1,13 @@
+[package]
+name = "panic_immediate_abort"
+version = "0.1.0"
+authors = ["johnthagen <johnthagen@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = 'abort'

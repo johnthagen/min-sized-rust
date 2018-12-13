@@ -1,0 +1,4 @@
+[[package]]
+name = "panic_immediate_abort"
+version = "0.1.0"
+

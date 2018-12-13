@@ -192,6 +192,25 @@ $ xargo build --target x86_64-apple-darwin --release
 
 Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 51KB.
 
+# Remove `panic` String Formatting with `panic_immediate_abort`
+
+> Example project is located in the [`panic_immediate_abort`](panic_immediate_abort) folder.
+
+Even if `panic = abort` is specified in `Cargo.toml`, `rustc` will still include panic strings
+and formatting code in final binary by default. 
+[An unstable `panic_immediate_abort` feature](https://github.com/rust-lang/rust/pull/55011)
+has been merged into the `nightly` `rustc` compiler to address this.
+
+To use this, repeat the instructions above to use Xargo, but instead use the following
+`Xargo.toml`:
+
+```toml
+[dependencies]
+std = {default-features=false, features=["panic_immediate_abort"]}
+```
+
+Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 30KB.
+
 # Removing `libstd` with `![no_std]`
 
 ![Minimum Rust: 1.30](https://img.shields.io/badge/Minimum%20Rust%20Version-1.30-brightgreen.svg)
@@ -229,10 +248,6 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
 ```
-
-# TODO
-
-- [`panic_immediate_abort`](https://github.com/rust-lang/rust/pull/55011)
 
 # References
 
