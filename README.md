@@ -90,6 +90,18 @@ use std::alloc::System;
 static A: System = System;
 ```
 
+# Reduce Parallel Code Generation Units to Increase Optimization
+
+[By default][cargo-profile], Cargo specifies 16 parallel codegen units for release builds.
+This improves compile times, but prevents some optimizations. 
+
+Set this to `1` in `Cargo.toml` to allow for maximum size reduction optimizations:
+
+```toml
+[profile.release]
+codegen-units = 1
+```
+
 # Abort on Panic
 
 ![Minimum Rust: 1.10](https://img.shields.io/badge/Minimum%20Rust%20Version-1.10-brightgreen.svg)
@@ -225,9 +237,6 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
 # TODO
 
 - [`panic_immediate_abort`](https://github.com/rust-lang/rust/pull/55011)
-
-- `codegen-units`
-
 
 # References
 
