@@ -124,13 +124,10 @@ panic = 'abort'
 
 # Optimize `std` with Xargo
 
-![Nightly-2018-10-31](https://img.shields.io/badge/Rust%20Version-nightly_2018/10/31-orange.svg)
+![Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
 > **Note**: [Xargo is currently in maintenance status](https://github.com/japaric/xargo/issues/193),
   but eventually the features used below should make their way into Cargo.
-
-> **Note**: Sometime in early November, 2018 `nightly` broke the way Xargo is used in this example,
-so the nightly has been pinned.
 
 > Example project is located in the [`xargo`](xargo) folder.
 
@@ -153,7 +150,7 @@ This is where [Xargo](https://github.com/japaric/xargo) comes in. Xargo is able 
 Modify `main.rs`:
 
 ```rust
-// Xargo must use a different way to disable jemalloc.
+// Nightly Rust (which Xargo uses) already defaults to system allocator.
 //use std::alloc::System;
 //
 //#[global_allocator]
@@ -168,16 +165,15 @@ Add a `Xargo.toml` file to the root of your project
 (this doesn't replace `Cargo.toml`, just is in addition):
 
 ```toml
-# Xargo.toml
-[dependencies.std]
-features = ["force_alloc_system"] # Disable jemalloc the Xargo way.
+[dependencies]
+std = {default-features=false}
 ```
 
 Install the appropriate toolchain and Xargo:
 
 ```bash
-$ rustup toolchain install nightly-2018-10-31
-$ rustup default nightly-2018-10-31
+$ rustup toolchain install nightly
+$ rustup default nightly
 $ rustup component add rust-src
 $ cargo install xargo
 ```
