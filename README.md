@@ -124,7 +124,7 @@ panic = 'abort'
 
 # Optimize `std` with Xargo
 
-![Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
+![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
 > **Note**: [Xargo is currently in maintenance status](https://github.com/japaric/xargo/issues/193),
   but eventually the features used below should make their way into Cargo.
@@ -193,6 +193,8 @@ $ xargo build --target x86_64-apple-darwin --release
 Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 51KB.
 
 # Remove `panic` String Formatting with `panic_immediate_abort`
+
+![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
 > Example project is located in the [`panic_immediate_abort`](panic_immediate_abort) folder.
 
