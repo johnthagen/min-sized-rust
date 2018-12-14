@@ -219,7 +219,7 @@ Remember to `strip` the resulting executable. On macOS, the final binary size is
 
 > Example project is located in the [`no_std`](no_std) folder.
 
-Up until this point, our application with using the Rust standard library, `libstd`. `libstd`
+Up until this point, our application was using the Rust standard library, `libstd`. `libstd`
 provides many convenient, well tested cross platform APIs and data types. But if a user wants
 to reduce binary size to an equivalent C program size, it is possible to depend only on `libc`.
 
