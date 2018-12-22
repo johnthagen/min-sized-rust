@@ -224,7 +224,7 @@ provides many convenient, well tested cross platform APIs and data types. But if
 to reduce binary size to an equivalent C program size, it is possible to depend only on `libc`.
 
 It's important to understand that there are many drawbacks to this approach. For one, you'll
-likely need to write a lot of `unsafe` and lose access to a majority of Rust crates
+likely need to write a lot of `unsafe` code and lose access to a majority of Rust crates
 that depend on `libstd`. Nevertheless, it is one (albeit extreme) option to reducing binary size.
 
 A `strip`ed binary built this way is around 8KB.
