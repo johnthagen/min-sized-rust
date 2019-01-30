@@ -25,7 +25,7 @@ cache: cargo
 script:
   - bash -c '
     if [[ -z "$CI_BUILD_TYPE" ]]; then
-      cd $CI_BUILD_TYPE;
+      cd "$CI_BUILD_TYPE";
     fi
 
     if [[ "$CI_BUILD_TYPE" == "xargo" ]] || [["$CI_BUILD_TYPE" == "panic_immediate_abort" ]]; then
