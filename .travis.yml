@@ -24,7 +24,7 @@ cache: cargo
 
 script:
   - bash -c '
-    if [ -z "$CI_BUILD_TYPE"]; then
+    if [[ -z "$CI_BUILD_TYPE" ]]; then
       cd $CI_BUILD_TYPE;
     fi
 
