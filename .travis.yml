@@ -14,11 +14,10 @@ matrix:
       rust: stable
       env: CI_BUILD_TYPE="no_std"
     - os: linux
-      # Pin nightly until Xargo fixed: https://github.com/japaric/xargo/issues/236
-      rust: nightly-2019-01-27
+      rust: nightly
       env: CI_BUILD_TYPE="xargo"
     - os: linux
-      rust: nightly-2019-01-27
+      rust: nightly
       env: CI_BUILD_TYPE="panic_immediate_abort"
 
 cache: cargo
