@@ -68,20 +68,21 @@ Enable LTO in `Cargo.toml`:
 lto = true
 ```
 
-# Disable Jemalloc
+# Remove Jemalloc
 
 ![Minimum Rust: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
+![Maximum Rust: 1.32](https://img.shields.io/badge/Maximum%20Rust%20Version-1.32-brightgreen.svg)
 
-To improve performance, Rust bundles 
+As of Rust 1.32, 
+[`jemalloc` is removed by default](https://blog.rust-lang.org/2019/01/17/Rust-1.32.0.html). If
+using Rust 1.32 or newer, no action is needed to reduce binary size regarding this feature.
+
+**Prior to Rust 1.32**, to improve performance Rust bundled
 [jemalloc](https://github.com/jemalloc/jemalloc), an allocator that often outperforms the
-defeault system allocator, on some platforms. Bundling jemalloc does add around 200KB to the
+defeault system allocator, on some platforms. Bundling jemalloc added around 200KB to the
 resulting binary, however.
 
-> Note that per https://github.com/rust-lang/rust/issues/36963#issuecomment-445553110, 
-Rust 1.32 stable will soon default to use the system allocator, at which point these 
-steps will no longer be necessary.
-
-Add this code to the top of `main.rs`:
+To remove `jemalloc` on Rust 1.28 - Rust 1.32, add this code to the top of `main.rs`:
 
 ```rust
 use std::alloc::System;
