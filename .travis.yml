@@ -11,23 +11,27 @@ matrix:
     - os: windows
       rust: stable
     - os: linux
-      rust: nightly
-      env: CI_BUILD_TYPE="XARGO"
-    - os: linux
       rust: stable
-      env: CI_BUILD_TYPE="NO_STD"
+      env: CI_BUILD_TYPE="no_std"
+    - os: linux
+      rust: nightly
+      env: CI_BUILD_TYPE="xargo"
+    - os: linux
+      rust: nightly
+      env: CI_BUILD_TYPE="panic_immediate_abort"
 
 cache: cargo
 
 script:
-  - bash -c 'if [[ "$CI_BUILD_TYPE" == "XARGO" ]]; then
-      cd xargo;
+  - bash -c '
+    if [[ -n "$CI_BUILD_TYPE" ]]; then
+      cd "$CI_BUILD_TYPE";
+    fi
+
+    if [[ "$CI_BUILD_TYPE" == "xargo" ]] || [[ "$CI_BUILD_TYPE" == "panic_immediate_abort" ]]; then
       rustup component add rust-src;
       cargo install xargo --force;
       xargo build --target x86_64-unknown-linux-gnu --release --verbose;
-    elif [[ "$CI_BUILD_TYPE" == "NO_STD" ]]; then
-      cd no_std;
-      cargo build --release --verbose --all;
     else
       cargo build --release --verbose --all;
     fi'
