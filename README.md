@@ -151,12 +151,6 @@ This is where [Xargo](https://github.com/japaric/xargo) comes in. Xargo is able 
 Modify `main.rs`:
 
 ```rust
-// Nightly Rust (which Xargo uses) already defaults to system allocator.
-//use std::alloc::System;
-//
-//#[global_allocator]
-//static A: System = System;
-
 fn main() {
     println!("Hello, world!");
 }
