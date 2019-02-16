@@ -122,7 +122,7 @@ Enable this in `Cargo.toml`:
 panic = 'abort'
 ```
 
-# Optimize `std` with Xargo
+# Optimize `libstd` with Xargo
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
@@ -131,20 +131,20 @@ panic = 'abort'
 
 > Example project is located in the [`xargo`](xargo) folder.
 
-Rust ships pre-built copies of the standard library (`std`) with its toolchains. This means
-that developers don't need to build `std` every time they build their applications. `std`
+Rust ships pre-built copies of the standard library (`libstd`) with its toolchains. This means
+that developers don't need to build `libstd` every time they build their applications. `libstd`
 is statically linked into the binary instead.
 
 While this is very convenient there are several drawbacks if a developer is trying to
 aggressively optimize for size.
 
-1. The prebuilt `std` is optimized for speed, not size.
+1. The prebuilt `libstd` is optimized for speed, not size.
 
-2. It's not possible to remove portions of `std` that are not used in a particular application 
-   (LTO).
+2. It's not possible to remove portions of `libstd` that are not used in a particular application 
+   (e.g. LTO and panic behaviour).
 
 This is where [Xargo](https://github.com/japaric/xargo) comes in. Xargo is able to compile
-`std` with your application from the source. It does this with the `rust-src` component that
+`libstd` with your application from the source. It does this with the `rust-src` component that
 `rustup` conveniently provides.
 
 Modify `main.rs`:
