@@ -6,6 +6,12 @@ edition = "2018"
 
 [dependencies]
 
+[profile.dev]
+# This isn't required for development builds, but makes development
+# build behavior match release builds. To enable unwinding panics
+# during development, simply remove this line.
+panic = 'abort'
+
 [profile.release]
 opt-level = "z"
 lto = true
