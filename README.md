@@ -208,7 +208,7 @@ std = {default-features=false, features=["panic_immediate_abort"]}
 
 Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 30KB.
 
-# Removing `libstd` with `![no_std]`
+# Removing `libstd` with `#![no_std]`
 
 ![Minimum Rust: 1.30](https://img.shields.io/badge/Minimum%20Rust%20Version-1.30-brightgreen.svg)
 
