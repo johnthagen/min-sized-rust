@@ -1,0 +1,19 @@
+[package]
+name = "no_main"
+version = "0.1.0"
+authors = ["johnthagen <johnthagen@gmail.com>", "Vitaly '_Vi' Shukela <vi0oss@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[profile.dev]
+# This isn't required for development builds, but makes development
+# build behavior match release builds. To enable unwinding panics
+# during development, simply remove this line.
+panic = 'abort'
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = 'abort'
