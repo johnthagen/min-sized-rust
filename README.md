@@ -208,6 +208,31 @@ std = {default-features=false, features=["panic_immediate_abort"]}
 
 Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 30KB.
 
+# Remove all strings formatting with `no_main` and careful dodging
+
+![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
+
+> Example project is located in the [`no_main`](no_main) folder.
+
+If you want executable smaller than 20 kilobytes, Rust's string formatting code should go.
+Usual `panic_immediate_abort` is only the beginning of the way. There is a lot of other code
+that uses formatting in some of cases. That includes Rust's "pre-main" code in libstd.
+
+By making C entry point, managing stdio manually, also carefully analyzing which chunks of code
+you or your dependencies include, you can sometimes make use of libstd while keeping bloated `core::fmt` away.
+
+Expect the code to be hacky and unportable, with more `unsafe{}`s than usual. It feels like `no_std`, but with libstd.
+Start with empty executable, ensure `xargo bloat --release --target=...` contains no `core::fmt` or something about padding.
+Add (uncomment) a little bit. See that `xargo bloat` now reports drastically more. Review source code that you've just added.
+Probably some external crate or new libstd's function is used. Recurse into that with your review process
+(it requires `[replace]` Cargo dependencies and maybe digging in libstd), find out why it weights more than it should.
+Choose alternative way or patch dependencies to avoid unnecessary features. Uncomment a bit more of your code, debug exploded size with `xargo bloat` and so on.
+
+For `x86_64-unknown-linux-gnu`, it drives executable size down from 31k to 6k (compared to previous `panic_immediate_abort` section).
+For `x86_64-unknown-linux-musl`, the size goes from 37k to [4.7k](no_main/prebuilt_executable) (it is hard to do musl with Xargo although).
+
+
+
 # Removing `libstd` with `#![no_std]`
 
 ![Minimum Rust: 1.30](https://img.shields.io/badge/Minimum%20Rust%20Version-1.30-brightgreen.svg)
