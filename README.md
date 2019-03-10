@@ -208,6 +208,39 @@ std = {default-features=false, features=["panic_immediate_abort"]}
 
 Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 30KB.
 
+# Remove `core::fmt` with `#![no_main]` and Careful Usage of `libstd`
+
+![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
+
+> Example project is located in the [`no_main`](no_main) folder.
+
+> This section was contributed in part by [@vi](https://github.com/vi)
+ 
+Up until this point, we haven't restricted what utilities we used from `libstd`. In this section
+we will restrict our usage of `libstd` in order to reduce binary size further.
+
+If you want an executable smaller than 20 kilobytes, Rust's string formatting code, `core::fmt` must 
+be removed. `panic_immediate_abort` only removes some usages of this code. There is a lot of other 
+code that uses formatting in some of cases. That includes Rust's "pre-main" code in `libstd`.
+
+By using a C entry point, managing stdio manually, and carefully analyzing which chunks of code
+you or your dependencies include, you can sometimes make use of `libstd ` while avoiding 
+bloated `core::fmt`.
+
+Expect the code to be hacky and unportable, with more `unsafe{}`s than usual. It feels like 
+`no_std`, but with `libstd`.
+
+Start with an empty executable, ensure 
+[`xargo bloat --release --target=...`](https://github.com/RazrFalcon/cargo-bloat) contains no 
+`core::fmt` or something about padding. Add (uncomment) a little bit. See that `xargo bloat` now 
+reports drastically more. Review source code that you've just added. Probably some external crate or 
+a new `libstd` function is used. Recurse into that with your review process
+(it requires `[replace]` Cargo dependencies and maybe digging in `libstd`), find out why it 
+weighs more than it should. Choose alternative way or patch dependencies to avoid unnecessary
+features. Uncomment a bit more of your code, debug exploded size with `xargo bloat` and so on.
+
+On macOS, the final stripped binary is reduced to 8KB.
+
 # Removing `libstd` with `#![no_std]`
 
 ![Minimum Rust: 1.30](https://img.shields.io/badge/Minimum%20Rust%20Version-1.30-brightgreen.svg)
