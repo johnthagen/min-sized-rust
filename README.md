@@ -223,9 +223,9 @@ If you want an executable smaller than 20 kilobytes, Rust's string formatting co
 be removed. `panic_immediate_abort` only removes some usages of this code. There is a lot of other 
 code that uses formatting in some of cases. That includes Rust's "pre-main" code in `libstd`.
 
-By using a C entry point, managing stdio manually, and carefully analyzing which chunks of code
-you or your dependencies include, you can sometimes make use of `libstd ` while avoiding 
-bloated `core::fmt`.
+By using a C entry point (by added the `#![no_main]` attribute) , managing stdio manually, and 
+carefully analyzing which chunks of code you or your dependencies include, you can sometimes 
+make use of `libstd ` while avoiding bloated `core::fmt`.
 
 Expect the code to be hacky and unportable, with more `unsafe{}`s than usual. It feels like 
 `no_std`, but with `libstd`.
