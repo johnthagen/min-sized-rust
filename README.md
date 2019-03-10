@@ -219,7 +219,8 @@ Remember to `strip` the resulting executable. On macOS, the final binary size is
 Up until this point, we haven't restricted what utilities we used from `libstd`. In this section
 we will restrict our usage of `libstd` in order to reduce binary size further.
 
-If you want an executable smaller than 20 kilobytes, Rust's string formatting code, `core::fmt` must 
+If you want an executable smaller than 20 kilobytes, Rust's string formatting code, 
+[`core::fmt`](https://doc.rust-lang.org/core/fmt/index.html) must 
 be removed. `panic_immediate_abort` only removes some usages of this code. There is a lot of other 
 code that uses formatting in some of cases. That includes Rust's "pre-main" code in `libstd`.
 
