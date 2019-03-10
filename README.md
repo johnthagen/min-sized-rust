@@ -279,6 +279,11 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
 }
 ```
 
+# Tools
+
+- [`cargo-bloat`](https://github.com/RazrFalcon/cargo-bloat) - Find out what takes most of the 
+  space in your executable.
+
 # References
 
 - [Why is a Rust executable large? - 2016][why-rust-binary-large]
