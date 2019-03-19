@@ -78,9 +78,9 @@ As of Rust 1.32,
 using Rust 1.32 or newer, no action is needed to reduce binary size regarding this feature.
 
 **Prior to Rust 1.32**, to improve performance Rust bundled
-[jemalloc](https://github.com/jemalloc/jemalloc), an allocator that often outperforms the
-defeault system allocator, on some platforms. Bundling jemalloc added around 200KB to the
-resulting binary, however.
+[jemalloc](https://github.com/jemalloc/jemalloc), on some platforms an allocator that often 
+outperforms the default system allocator, on some platforms. Bundling jemalloc added around 200KB 
+to the resulting binary, however.
 
 To remove `jemalloc` on Rust 1.28 - Rust 1.32, add this code to the top of `main.rs`:
 
