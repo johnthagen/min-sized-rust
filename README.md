@@ -148,14 +148,6 @@ This is where [Xargo](https://github.com/japaric/xargo) comes in. Xargo is able 
 `libstd` with your application from the source. It does this with the `rust-src` component that
 `rustup` conveniently provides.
 
-Modify `main.rs`:
-
-```rust
-fn main() {
-    println!("Hello, world!");
-}
-```
-
 Add a `Xargo.toml` file to the root of your project 
 (this doesn't replace `Cargo.toml`, just is in addition):
 
