@@ -282,8 +282,10 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
 - [Why is a Rust executable large? - 2016][why-rust-binary-large]
 - [Freestanding Rust Binary - 2018](https://os.phil-opp.com/freestanding-rust-binary/)
 - [Tiny Rocket - 2018](https://jamesmunns.com/blog/tinyrocket/)
+- [Formatting is Unreasonably Expensive for Embedded Rust][fmt-unreasonably-expensive]
 
 [why-rust-binary-large]: https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html
+[fmt-unreasonably-expensive]: https://jamesmunns.com/blog/fmt-unreasonably-expensive/
 
 <!-- Badges -->
 [travis-build-status]: https://travis-ci.org/johnthagen/min-sized-rust
