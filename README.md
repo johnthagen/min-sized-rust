@@ -283,9 +283,11 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
 - [Freestanding Rust Binary - 2018](https://os.phil-opp.com/freestanding-rust-binary/)
 - [Tiny Rocket - 2018](https://jamesmunns.com/blog/tinyrocket/)
 - [Formatting is Unreasonably Expensive for Embedded Rust - 2019][fmt-unreasonably-expensive]
+- [Tiny Windows executable in Rust - 2019][tiny-windows-exe]
 
 [why-rust-binary-large]: https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html
 [fmt-unreasonably-expensive]: https://jamesmunns.com/blog/fmt-unreasonably-expensive/
+[tiny-windows-exe]: https://www.codeslow.com/2019/12/tiny-windows-executable-in-rust.html
 
 <!-- Badges -->
 [travis-build-status]: https://travis-ci.org/johnthagen/min-sized-rust
