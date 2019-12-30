@@ -28,6 +28,10 @@ $ cargo build --release
 
 ![OS: *nix](https://img.shields.io/badge/OS-*nix-brightgreen.svg)
 
+> Note: Looking for a tool to help automated `strip`ing? Check out 
+[`cargo-strip`](https://github.com/guedou/cargo-strip) or follow 
+[Cargo #3483](https://github.com/rust-lang/cargo/issues/3483).
+
 By default on Linux and macOS, symbol information is included in the compiled `.elf` file. This
 information is not needed to properly execute the binary.
 To remove this, run [`strip`](https://linux.die.net/man/1/strip) on the `.elf` file:
