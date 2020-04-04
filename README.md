@@ -294,5 +294,5 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
 [tiny-windows-exe]: https://www.codeslow.com/2019/12/tiny-windows-executable-in-rust.html
 
 <!-- Badges -->
-[travis-build-status]: https://travis-ci.org/johnthagen/min-sized-rust
-[travis-build-status-svg]: https://travis-ci.org/johnthagen/min-sized-rust.svg?branch=master
+[travis-build-status]: https://travis-ci.com/johnthagen/min-sized-rust
+[travis-build-status-svg]: https://travis-ci.com/johnthagen/min-sized-rust.svg?branch=master
