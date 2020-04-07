@@ -164,7 +164,7 @@ Install the appropriate toolchain and Xargo:
 
 ```bash
 $ rustup toolchain install nightly
-$ rustup default nightly
+$ rustup override set nightly
 $ rustup component add rust-src
 $ cargo install xargo
 ```
