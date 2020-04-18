@@ -49,7 +49,7 @@ which optimizes the binary for speed. To instruct Cargo to optimize for minimal 
 size, use the `z` optimization level in 
 [`Cargo.toml`](https://doc.rust-lang.org/cargo/reference/manifest.html):
 
-[cargo-profile]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-profile-sections
+[cargo-profile]: https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles
 
 ```toml
 [profile.release]
