@@ -288,10 +288,12 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
 - [Tiny Rocket - 2018](https://jamesmunns.com/blog/tinyrocket/)
 - [Formatting is Unreasonably Expensive for Embedded Rust - 2019][fmt-unreasonably-expensive]
 - [Tiny Windows executable in Rust - 2019][tiny-windows-exe]
+- [Reducing the size of the Rust GStreamer plugin - 2020][gstreamer-plugin]
 
 [why-rust-binary-large]: https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html
 [fmt-unreasonably-expensive]: https://jamesmunns.com/blog/fmt-unreasonably-expensive/
 [tiny-windows-exe]: https://www.codeslow.com/2019/12/tiny-windows-executable-in-rust.html
+[gstreamer-plugin]: https://www.collabora.com/news-and-blog/blog/2020/04/28/reducing-size-rust-gstreamer-plugin/
 
 <!-- Badges -->
 [travis-build-status]: https://travis-ci.com/johnthagen/min-sized-rust
