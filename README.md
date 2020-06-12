@@ -40,6 +40,15 @@ To remove this, run [`strip`](https://linux.die.net/man/1/strip) on the `.elf` f
 $ strip target/release/min-sized-rust
 ```
 
+Available starting `1.45.0-nightly (2020-05-28)`,
+[Cargo has `strip` functionality built in](https://github.com/rust-lang/cargo/pull/8246):
+
+![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly%201.45.0-orange.svg)
+
+```bash
+$ cargo +nightly build -Z strip=symbols
+```
+
 # Optimize For Size
 
 ![Minimum Rust: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
