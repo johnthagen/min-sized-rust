@@ -11,9 +11,6 @@ matrix:
     - os: windows
       rust: stable
     - os: linux
-      rust: stable
-      env: CI_BUILD_TYPE="no_std"
-    - os: linux
       rust: nightly
       env: CI_BUILD_TYPE="xargo"
     - os: linux
