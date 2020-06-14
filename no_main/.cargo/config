@@ -1,0 +1,3 @@
+[build]
+# This is needed to work around: https://github.com/japaric/xargo/issues/292
+rustflags = ["-Cembed-bitcode=yes"]
