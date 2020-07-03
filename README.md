@@ -87,8 +87,9 @@ lto = true
 ![Maximum Rust: 1.31](https://img.shields.io/badge/Maximum%20Rust%20Version-1.31-brightgreen.svg)
 
 As of Rust 1.32, 
-[`jemalloc` is removed by default](https://blog.rust-lang.org/2019/01/17/Rust-1.32.0.html). If
-using Rust 1.32 or newer, no action is needed to reduce binary size regarding this feature.
+[`jemalloc` is removed by default](https://blog.rust-lang.org/2019/01/17/Rust-1.32.0.html). 
+**If using Rust 1.32 or newer, no action is needed to reduce binary size regarding this 
+feature**.
 
 **Prior to Rust 1.32**, to improve performance on some platforms Rust bundled
 [jemalloc](https://github.com/jemalloc/jemalloc), an allocator that often 
