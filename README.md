@@ -54,8 +54,8 @@ $ cargo +nightly build -Z strip=symbols
 ![Minimum Rust: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
 
 [Cargo defaults its optimization level to `3` for release builds][cargo-profile],
-which optimizes the binary for speed. To instruct Cargo to optimize for minimal binary
-size, use the `z` optimization level in 
+which optimizes the binary for **speed**. To instruct Cargo to optimize for minimal binary
+**size**, use the `z` optimization level in 
 [`Cargo.toml`](https://doc.rust-lang.org/cargo/reference/manifest.html):
 
 [cargo-profile]: https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles
