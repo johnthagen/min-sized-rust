@@ -141,6 +141,10 @@ panic = 'abort'
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
+> **Note**: See also the nightly Cargo 
+  [`-Z build-std` feature ](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std),
+  which will likely evolve into a replacement for much of what Xargo currently does.
+
 > **Note**: [Xargo is currently in maintenance status](https://github.com/japaric/xargo/issues/193),
   but eventually the features used below should make their way into Cargo.
 
