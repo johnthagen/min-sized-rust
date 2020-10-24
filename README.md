@@ -49,6 +49,17 @@ Available starting `1.45.0-nightly (2020-05-28)`,
 $ cargo +nightly build -Z strip=symbols
 ```
 
+# Compress the binary
+
+[`uxp`](https://github.com/upx/upx) is a powerful tool for creating a self contained, compressed binary with no addition
+runtime requirements.  It claims to typically reduce file size by 50-70% but the actual result depends on your
+executable.  For our example we see a respectable 23% reduction.
+
+```bash
+$ uxp --best --lzma target/release/min-sized-rust
+```
+
+
 # Optimize For Size
 
 ![Minimum Rust: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
