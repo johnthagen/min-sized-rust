@@ -32,6 +32,9 @@ $ cargo build --release
 [`cargo-strip`](https://github.com/guedou/cargo-strip) or follow 
 [Cargo #3483](https://github.com/rust-lang/cargo/issues/3483).
 
+> See also: [`sstrip`](https://github.com/BR903/ELFkickers) a small utility that removes a few
+bytes from an executable that strip leaves behind. `sstrip` should be run after `strip`.
+
 By default on Linux and macOS, symbol information is included in the compiled `.elf` file. This
 information is not needed to properly execute the binary.
 To remove this, run [`strip`](https://linux.die.net/man/1/strip) on the `.elf` file:
