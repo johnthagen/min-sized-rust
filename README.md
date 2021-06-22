@@ -314,6 +314,16 @@ heuristic-based anti-virus software because malware often uses UPX.
 - [`cargo-bloat`](https://github.com/RazrFalcon/cargo-bloat) - Find out what takes most of the 
   space in your executable.
 
+# Containers
+
+Sometimes it's advantageous to deploy Rust into containers 
+(e.g. [Docker](https://www.docker.com/)). There are several great existing resources to help 
+create minimum sized Docker containers that run Rust binaries.
+
+- [mini-docker-rust](https://github.com/kpcyrd/mini-docker-rust)
+- [rust-musl-builder](https://github.com/emk/rust-musl-builder)
+- [muslrust](https://github.com/clux/muslrust)
+
 # References
 
 - [Why is a Rust executable large? - 2016][why-rust-binary-large]
