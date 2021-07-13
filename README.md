@@ -331,12 +331,14 @@ create minimum sized Docker containers that run Rust binaries.
 - [Tiny Rocket - 2018](https://jamesmunns.com/blog/tinyrocket/)
 - [Formatting is Unreasonably Expensive for Embedded Rust - 2019][fmt-unreasonably-expensive]
 - [Tiny Windows executable in Rust - 2019][tiny-windows-exe]
+- [Making a really tiny WebAssembly graphics demos - 2019][tiny-webassembly-graphics]
 - [Reducing the size of the Rust GStreamer plugin - 2020][gstreamer-plugin]
 - [`min-sized-rust-windows`][min-sized-rust-windows] - Windows-specific tricks to reduce binary size
 
 [why-rust-binary-large]: https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html
 [fmt-unreasonably-expensive]: https://jamesmunns.com/blog/fmt-unreasonably-expensive/
 [tiny-windows-exe]: https://www.codeslow.com/2019/12/tiny-windows-executable-in-rust.html
+[tiny-webassembly-graphics]: https://cliffle.com/blog/bare-metal-wasm/
 [gstreamer-plugin]: https://www.collabora.com/news-and-blog/blog/2020/04/28/reducing-size-rust-gstreamer-plugin/
 [min-sized-rust-windows]: https://github.com/mcountryman/min-sized-rust-windows
 
