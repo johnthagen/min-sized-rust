@@ -44,12 +44,17 @@ $ strip target/release/min-sized-rust
 ```
 
 Available starting `1.45.0-nightly (2020-05-28)`,
-[Cargo has `strip` functionality built in](https://github.com/rust-lang/cargo/pull/8246):
+[Cargo has `strip` functionality built in](https://doc.rust-lang.org/cargo/reference/unstable.html#profile-strip-option):
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly%201.45.0-orange.svg)
 
-```bash
-$ cargo +nightly build -Z strip=symbols
+Modify `Cargo.toml` in this way:
+
+```toml
+cargo-features = ["strip"]
+
+[profile.release]
+strip = true  # Automatically strip symbols from the binary.
 ```
 
 # Optimize For Size
