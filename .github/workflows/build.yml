@@ -24,7 +24,7 @@ jobs:
     name: no_std
     strategy:
       matrix:
-        toolchain: [ stable, 1.31.0, nightly ]
+        toolchain: [ stable, 1.28.0, nightly ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -33,7 +33,7 @@ jobs:
           toolchain: ${{ matrix.toolchain }}
           override: true
       - name: Build
-        working-directory: no_main
+        working-directory: no_std
         run: cargo build --release --all-features
   xargo:
     name: xargo
