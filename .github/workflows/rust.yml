@@ -3,9 +3,12 @@ name: rust
 on: [push, pull_request]
 
 jobs:
-  build_and_test:
-    name: Rust project
-    runs-on: ubuntu-latest
+  build:
+    name: Build
+    strategy:
+      matrix:
+        platform: [ ubuntu-latest, macos-latest, windows-latest ]
+    runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
