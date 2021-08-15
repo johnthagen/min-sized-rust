@@ -1,0 +1,55 @@
+name: rust
+
+on: [ push, pull_request ]
+
+jobs:
+  default:
+    name: Default
+    strategy:
+      matrix:
+        platform: [ ubuntu-latest, macos-latest, windows-latest ]
+        toolchain: [ stable, 1.28.0, nightly ]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release --all-features
+  no_std:
+    name: no_std
+    strategy:
+      matrix:
+        toolchain: [ stable, 1.30.0, nightly ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          override: true
+      - name: Build
+        working-directory: no_std
+        run: cargo build --release --all-features
+  xargo:
+    name: xargo
+    strategy:
+      matrix:
+        project_dir: [ xargo, no_main, panic_immediate_abort]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          override: true
+      - name: Build
+        working-directory: ${{ matrix.project_dir }}
+        run: >
+          rustup component add rust-src;
+          cargo install xargo --force;
+          xargo build --target x86_64-unknown-linux-gnu --release --verbose;
