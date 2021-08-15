@@ -2,7 +2,7 @@
 
 [![GitHub Actions][github-actions-badge]](https://github.com/johnthagen/min-sized-rust/actions)
 
-[github-actions-badge]: https://github.com/johnthagen/min-sized-rust/workflows/rust/badge.svg
+[github-actions-badge]: https://github.com/johnthagen/min-sized-rust/workflows/build/badge.svg
 
 This repository demonstrates how to minimize the size of a Rust binary.
 
