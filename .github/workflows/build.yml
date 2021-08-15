@@ -24,7 +24,7 @@ jobs:
     name: no_std
     strategy:
       matrix:
-        toolchain: [ stable, 1.28.0, nightly ]
+        toolchain: [ stable, 1.30.0, nightly ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
