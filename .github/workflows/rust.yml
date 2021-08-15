@@ -9,7 +9,7 @@ jobs:
       matrix:
         platform: [ ubuntu-latest, macos-latest, windows-latest ]
         toolchain: [ stable, 1.28.0, nightly ]
-        project_dir: [ ".", "no_main" ]
+        project_dir: [ ".", "no_std" ]
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
