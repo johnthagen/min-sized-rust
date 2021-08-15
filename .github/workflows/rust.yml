@@ -15,6 +15,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: ${{ matrix.toolchain }}
+          override: true
       - uses: actions-rs/cargo@v1
         with:
           command: build
@@ -30,6 +31,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: ${{ matrix.toolchain }}
+          override: true
       - name: Build
         working-directory: no_main
         run: cargo build --release --all-features
@@ -44,6 +46,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: nightly
+          override: true
       - name: Build
         working-directory: ${{ matrix.project_dir }}
         run: >

@@ -1,8 +1,8 @@
 # Minimizing Rust Binary Size
 
-| Build Status |                                                                                |
-|--------------|--------------------------------------------------------------------------------|
-| Travis       | [![Travis Build Status][travis-build-status-svg]][travis-build-status]         |
+[![GitHub Actions][github-actions-badge]](https://github.com/johnthagen/min-sized-rust/actions)
+
+[github-actions-badge]: https://github.com/johnthagen/min-sized-rust/workflows/rust/badge.svg
 
 This repository demonstrates how to minimize the size of a Rust binary.
 
