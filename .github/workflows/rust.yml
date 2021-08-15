@@ -30,7 +30,6 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: ${{ matrix.toolchain }}
-      - uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --release --all-features
+      - name: Build
+        working-directory: no_main
+        run: cargo build --release --all-features
