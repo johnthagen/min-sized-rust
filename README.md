@@ -231,7 +231,7 @@ we will restrict our usage of `libstd` in order to reduce binary size further.
 If you want an executable smaller than 20 kilobytes, Rust's string formatting code, 
 [`core::fmt`](https://doc.rust-lang.org/core/fmt/index.html) must 
 be removed. `panic_immediate_abort` only removes some usages of this code. There is a lot of other 
-code that uses formatting in some of cases. That includes Rust's "pre-main" code in `libstd`.
+code that uses formatting in some cases. That includes Rust's "pre-main" code in `libstd`.
 
 By using a C entry point (by adding the `#![no_main]` attribute) , managing stdio manually, and 
 carefully analyzing which chunks of code you or your dependencies include, you can sometimes 
@@ -258,7 +258,7 @@ On macOS, the final stripped binary is reduced to 8KB.
 > Example project is located in the [`no_std`](no_std) folder.
 
 Up until this point, our application was using the Rust standard library, `libstd`. `libstd`
-provides many convenient, well tested cross platform APIs and data types. But if a user wants
+provides many convenient, well tested cross-platform APIs and data types. But if a user wants
 to reduce binary size to an equivalent C program size, it is possible to depend only on `libc`.
 
 It's important to understand that there are many drawbacks to this approach. For one, you'll
