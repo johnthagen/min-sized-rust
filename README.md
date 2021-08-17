@@ -190,9 +190,9 @@ $ rustc -vV
 host: x86_64-apple-darwin
 
 # Use that target triple when building with build-std.
-# Add the =panic_abort,std to the option to make panic = "abort" Cargo.toml option work. See:
+# Add the =std,panic_abort to the option to make panic = "abort" Cargo.toml option work. See:
 # https://github.com/rust-lang/wg-cargo-std-aware/issues/56
-$ cargo +nightly build -Z build-std=panic_abort,std --target x86_64-apple-darwin --release
+$ cargo +nightly build -Z build-std=std,panic_abort --target x86_64-apple-darwin --release
 ```
 
 Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 51KB.
