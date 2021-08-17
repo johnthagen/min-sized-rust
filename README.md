@@ -197,7 +197,7 @@ Remember to `strip` the resulting executable. On macOS, the final binary size is
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
-Even if `panic = abort` is specified in `Cargo.toml`, `rustc` will still include panic strings
+Even if `panic = "abort"` is specified in `Cargo.toml`, `rustc` will still include panic strings
 and formatting code in final binary by default. 
 [An unstable `panic_immediate_abort` feature](https://github.com/rust-lang/rust/pull/55011)
 has been merged into the `nightly` `rustc` compiler to address this.
