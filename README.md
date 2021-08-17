@@ -305,6 +305,9 @@ heuristic-based anti-virus software because malware often uses UPX.
 
 - [`cargo-bloat`](https://github.com/RazrFalcon/cargo-bloat) - Find out what takes most of the 
   space in your executable.
+- [`momo`](https://github.com/llogiq/momo) - `proc_macro` crate to help keeping the code footprint
+  of generic methods in check.
+- [Twiggy](https://rustwasm.github.io/twiggy/index.html) - A code size profiler for Wasm.
 
 # Containers
 
