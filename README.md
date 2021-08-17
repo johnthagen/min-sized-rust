@@ -145,7 +145,7 @@ Enable this in `Cargo.toml`:
 panic = "abort"
 ```
 
-# Optimize `libstd` with Xargo
+# Optimize `libstd` with `build-std`
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
@@ -153,10 +153,10 @@ panic = "abort"
   [`-Z build-std` feature ](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std),
   which will likely evolve into a replacement for much of what Xargo currently does.
 
-> **Note**: [Xargo is currently in maintenance status](https://github.com/japaric/xargo/issues/193),
-  but eventually the features used below should make their way into Cargo.
+> **Note**: See also [Xargo](https://github.com/japaric/xargo), the predecessor to `build-std.
+  [Xargo is currently in maintenance status](https://github.com/japaric/xargo/issues/193).
 
-> Example project is located in the [`xargo`](xargo) folder.
+> Example project is located in the [`build_std`](build_std) folder.
 
 Rust ships pre-built copies of the standard library (`libstd`) with its toolchains. This means
 that developers don't need to build `libstd` every time they build their applications. `libstd`
@@ -170,28 +170,18 @@ aggressively optimize for size.
 2. It's not possible to remove portions of `libstd` that are not used in a particular application 
    (e.g. LTO and panic behaviour).
 
-This is where [Xargo](https://github.com/japaric/xargo) comes in. Xargo is able to compile
-`libstd` with your application from the source. It does this with the `rust-src` component that
-`rustup` conveniently provides.
+This is where [`build-std`](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std) 
+comes in. The `build-std` feature is able to compile `libstd` with your application from the
+source. It does this with the `rust-src` component that `rustup` conveniently provides.
 
-Add a `Xargo.toml` file to the root of your project 
-(this doesn't replace `Cargo.toml`, just is in addition):
-
-```toml
-[dependencies]
-std = {default-features=false}
-```
-
-Install the appropriate toolchain and Xargo:
+Install the appropriate toolchain the `rust-src` component:
 
 ```bash
 $ rustup toolchain install nightly
-$ rustup override set nightly
-$ rustup component add rust-src
-$ cargo install xargo
+$ rustup component add rust-src --toolchain nightly
 ```
 
-Build using Xargo:
+Build using `build-std`:
 
 ```bash
 # Find your host's target triple. 
@@ -199,8 +189,10 @@ $ rustc -vV
 ...
 host: x86_64-apple-darwin
 
-# Use that target triple when building with Xargo.
-$ xargo build --target x86_64-apple-darwin --release
+# Use that target triple when building with build-std.
+# Add the =panic_abort,std to the option to make panic = "abort" Cargo.toml option work. See:
+# https://github.com/rust-lang/wg-cargo-std-aware/issues/56
+$ cargo +nightly build -Z build-std=panic_abort,std --target x86_64-apple-darwin --release
 ```
 
 Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 51KB.
