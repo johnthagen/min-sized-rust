@@ -201,19 +201,18 @@ Remember to `strip` the resulting executable. On macOS, the final binary size is
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
-> Example project is located in the [`panic_immediate_abort`](panic_immediate_abort) folder.
-
 Even if `panic = abort` is specified in `Cargo.toml`, `rustc` will still include panic strings
 and formatting code in final binary by default. 
 [An unstable `panic_immediate_abort` feature](https://github.com/rust-lang/rust/pull/55011)
 has been merged into the `nightly` `rustc` compiler to address this.
 
-To use this, repeat the instructions above to use Xargo, but instead use the following
-`Xargo.toml`:
+To use this, repeat the instructions above to use `build-std`, but also pass the following
+[`-Z build-std-features=panic_immediate_abort`](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std-features)
+option.
 
-```toml
-[dependencies]
-std = {default-features=false, features=["panic_immediate_abort"]}
+```bash
+$ cargo +nightly build -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort \
+    --target x86_64-apple-darwin --release
 ```
 
 Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 30KB.
