@@ -174,7 +174,7 @@ This is where [`build-std`](https://doc.rust-lang.org/cargo/reference/unstable.h
 comes in. The `build-std` feature is able to compile `libstd` with your application from the
 source. It does this with the `rust-src` component that `rustup` conveniently provides.
 
-Install the appropriate toolchain the `rust-src` component:
+Install the appropriate toolchain and the `rust-src` component:
 
 ```bash
 $ rustup toolchain install nightly
@@ -190,8 +190,8 @@ $ rustc -vV
 host: x86_64-apple-darwin
 
 # Use that target triple when building with build-std.
-# Add the =std,panic_abort to the option to make panic = "abort" Cargo.toml option work. See:
-# https://github.com/rust-lang/wg-cargo-std-aware/issues/56
+# Add the =std,panic_abort to the option to make panic = "abort" Cargo.toml option work.
+# See: https://github.com/rust-lang/wg-cargo-std-aware/issues/56
 $ cargo +nightly build -Z build-std=std,panic_abort --target x86_64-apple-darwin --release
 ```
 
