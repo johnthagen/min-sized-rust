@@ -145,18 +145,14 @@ Enable this in `Cargo.toml`:
 panic = "abort"
 ```
 
-# Optimize `libstd` with Xargo
+# Optimize `libstd` with `build-std`
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
-> **Note**: See also the nightly Cargo 
-  [`-Z build-std` feature ](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std),
-  which will likely evolve into a replacement for much of what Xargo currently does.
+> **Note**: See also [Xargo](https://github.com/japaric/xargo), the predecessor to `build-std`.
+  [Xargo is currently in maintenance status](https://github.com/japaric/xargo/issues/193).
 
-> **Note**: [Xargo is currently in maintenance status](https://github.com/japaric/xargo/issues/193),
-  but eventually the features used below should make their way into Cargo.
-
-> Example project is located in the [`xargo`](xargo) folder.
+> Example project is located in the [`build_std`](build_std) folder.
 
 Rust ships pre-built copies of the standard library (`libstd`) with its toolchains. This means
 that developers don't need to build `libstd` every time they build their applications. `libstd`
@@ -170,28 +166,18 @@ aggressively optimize for size.
 2. It's not possible to remove portions of `libstd` that are not used in a particular application 
    (e.g. LTO and panic behaviour).
 
-This is where [Xargo](https://github.com/japaric/xargo) comes in. Xargo is able to compile
-`libstd` with your application from the source. It does this with the `rust-src` component that
-`rustup` conveniently provides.
+This is where [`build-std`](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std) 
+comes in. The `build-std` feature is able to compile `libstd` with your application from the
+source. It does this with the `rust-src` component that `rustup` conveniently provides.
 
-Add a `Xargo.toml` file to the root of your project 
-(this doesn't replace `Cargo.toml`, just is in addition):
-
-```toml
-[dependencies]
-std = {default-features=false}
-```
-
-Install the appropriate toolchain and Xargo:
+Install the appropriate toolchain and the `rust-src` component:
 
 ```bash
 $ rustup toolchain install nightly
-$ rustup override set nightly
-$ rustup component add rust-src
-$ cargo install xargo
+$ rustup component add rust-src --toolchain nightly
 ```
 
-Build using Xargo:
+Build using `build-std`:
 
 ```bash
 # Find your host's target triple. 
@@ -199,8 +185,10 @@ $ rustc -vV
 ...
 host: x86_64-apple-darwin
 
-# Use that target triple when building with Xargo.
-$ xargo build --target x86_64-apple-darwin --release
+# Use that target triple when building with build-std.
+# Add the =std,panic_abort to the option to make panic = "abort" Cargo.toml option work.
+# See: https://github.com/rust-lang/wg-cargo-std-aware/issues/56
+$ cargo +nightly build -Z build-std=std,panic_abort --target x86_64-apple-darwin --release
 ```
 
 Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 51KB.
@@ -209,19 +197,18 @@ Remember to `strip` the resulting executable. On macOS, the final binary size is
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
-> Example project is located in the [`panic_immediate_abort`](panic_immediate_abort) folder.
-
-Even if `panic = abort` is specified in `Cargo.toml`, `rustc` will still include panic strings
+Even if `panic = "abort"` is specified in `Cargo.toml`, `rustc` will still include panic strings
 and formatting code in final binary by default. 
 [An unstable `panic_immediate_abort` feature](https://github.com/rust-lang/rust/pull/55011)
 has been merged into the `nightly` `rustc` compiler to address this.
 
-To use this, repeat the instructions above to use Xargo, but instead use the following
-`Xargo.toml`:
+To use this, repeat the instructions above to use `build-std`, but also pass the following
+[`-Z build-std-features=panic_immediate_abort`](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std-features)
+option.
 
-```toml
-[dependencies]
-std = {default-features=false, features=["panic_immediate_abort"]}
+```bash
+$ cargo +nightly build -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort \
+    --target x86_64-apple-darwin --release
 ```
 
 Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 30KB.
@@ -240,7 +227,7 @@ we will restrict our usage of `libstd` in order to reduce binary size further.
 If you want an executable smaller than 20 kilobytes, Rust's string formatting code, 
 [`core::fmt`](https://doc.rust-lang.org/core/fmt/index.html) must 
 be removed. `panic_immediate_abort` only removes some usages of this code. There is a lot of other 
-code that uses formatting in some of cases. That includes Rust's "pre-main" code in `libstd`.
+code that uses formatting in some cases. That includes Rust's "pre-main" code in `libstd`.
 
 By using a C entry point (by adding the `#![no_main]` attribute) , managing stdio manually, and 
 carefully analyzing which chunks of code you or your dependencies include, you can sometimes 
@@ -267,7 +254,7 @@ On macOS, the final stripped binary is reduced to 8KB.
 > Example project is located in the [`no_std`](no_std) folder.
 
 Up until this point, our application was using the Rust standard library, `libstd`. `libstd`
-provides many convenient, well tested cross platform APIs and data types. But if a user wants
+provides many convenient, well tested cross-platform APIs and data types. But if a user wants
 to reduce binary size to an equivalent C program size, it is possible to depend only on `libc`.
 
 It's important to understand that there are many drawbacks to this approach. For one, you'll

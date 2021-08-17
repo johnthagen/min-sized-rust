@@ -1,7 +1,6 @@
 [package]
-name = "min-sized-rust-xargo"
+name = "build_std"
 version = "0.1.0"
-authors = ["johnthagen <johnthagen@gmail.com>"]
 edition = "2018"
 license = "MIT"
 

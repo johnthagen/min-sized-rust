@@ -35,11 +35,11 @@ jobs:
       - name: Build
         working-directory: no_std
         run: cargo build --release --all-features
-  xargo:
-    name: xargo
+  build_std:
+    name: build-std
     strategy:
       matrix:
-        project_dir: [ xargo, no_main, panic_immediate_abort]
+        project_dir: [ build_std, no_main ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -51,5 +51,5 @@ jobs:
         working-directory: ${{ matrix.project_dir }}
         run: >
           rustup component add rust-src;
-          cargo install xargo --force;
-          xargo build --target x86_64-unknown-linux-gnu --release --verbose;
+          cargo +nightly build -Z build-std=std,panic_abort --target x86_64-unknown-linux-gnu --release;
+          cargo +nightly build -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort --target x86_64-unknown-linux-gnu --release;
