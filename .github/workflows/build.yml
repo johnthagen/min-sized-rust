@@ -24,8 +24,9 @@ jobs:
     name: no_std
     strategy:
       matrix:
+        platform: [ ubuntu-latest, macos-latest ]
         toolchain: [ stable, 1.30.0, nightly ]
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
