@@ -31,13 +31,6 @@ $ cargo build --release
 
 ![OS: *nix](https://img.shields.io/badge/OS-*nix-brightgreen.svg)
 
-> Note: Looking for a tool to help automated `strip`ing? Check out 
-[`cargo-strip`](https://github.com/guedou/cargo-strip) or follow 
-[Cargo #3483](https://github.com/rust-lang/cargo/issues/3483).
-
-> See also: [`sstrip`](https://github.com/BR903/ELFkickers) a small utility that removes a few
-bytes from an executable that strip leaves behind. `sstrip` should be run after `strip`.
-
 By default on Linux and macOS, symbol information is included in the compiled `.elf` file. This
 information is not needed to properly execute the binary.
 To remove this, run [`strip`](https://linux.die.net/man/1/strip) on the `.elf` file:
@@ -46,16 +39,13 @@ To remove this, run [`strip`](https://linux.die.net/man/1/strip) on the `.elf` f
 $ strip target/release/min-sized-rust
 ```
 
-Available starting `1.45.0-nightly (2020-05-28)`,
-[Cargo has `strip` functionality built in](https://doc.rust-lang.org/cargo/reference/unstable.html#profile-strip-option):
+[Cargo has `strip` functionality built in](https://doc.rust-lang.org/cargo/reference/profiles.html#strip):
 
-![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly%201.45.0-orange.svg)
+![Minimum Rust: 1.58](https://img.shields.io/badge/Minimum%20Rust%20Version-1.58-brightgreen.svg)
 
 Modify `Cargo.toml` in this way:
 
 ```toml
-cargo-features = ["strip"]
-
 [profile.release]
 strip = true  # Automatically strip symbols from the binary.
 ```
