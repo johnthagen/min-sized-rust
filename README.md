@@ -41,7 +41,7 @@ $ strip target/release/min-sized-rust
 
 [Cargo has `strip` functionality built in](https://doc.rust-lang.org/cargo/reference/profiles.html#strip):
 
-![Minimum Rust: 1.58](https://img.shields.io/badge/Minimum%20Rust%20Version-1.58-brightgreen.svg)
+![Minimum Rust: 1.59](https://img.shields.io/badge/Minimum%20Rust%20Version-1.59-brightgreen.svg)
 
 Modify `Cargo.toml` in this way:
 
