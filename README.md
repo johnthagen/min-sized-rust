@@ -49,6 +49,8 @@ $ strip target/release/min-sized-rust
 Available starting `1.45.0-nightly (2020-05-28)`,
 [Cargo has `strip` functionality built in](https://doc.rust-lang.org/cargo/reference/unstable.html#profile-strip-option):
 
+> Usage directly with `cargo` will be stabilized with rust [`1.59`](https://github.com/rust-lang/cargo/blob/master/CHANGELOG.md#cargo-159-2022-02-24)
+
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly%201.45.0-orange.svg)
 
 Modify `Cargo.toml` in this way:
@@ -59,6 +61,18 @@ cargo-features = ["strip"]
 [profile.release]
 strip = true  # Automatically strip symbols from the binary.
 ```
+
+![Minimum Rust: 1.58](https://img.shields.io/badge/Minimum%20Rust%20Version-1.58-brightgreen.svg)
+
+To avoid using the nightly, you can add the rustc flag that is now [stabilized](https://github.com/rust-lang/rust/blob/master/RELEASES.md#version-1580-2022-01-13) (since `1.58`).
+
+Add the following to `.cargo/config`:
+
+```toml
+[build]
+rustflags = ["-Cstrip=symbols"]
+```
+or build with `RUSTFLAGS='-C strip=symbols' cargo build --release`
 
 # Optimize For Size
 
