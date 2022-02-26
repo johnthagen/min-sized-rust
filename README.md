@@ -44,7 +44,7 @@ Modify `Cargo.toml` in this way:
 strip = true  # Automatically strip symbols from the binary.
 ```
 
-On Rust versions older than 1.59, run [`strip`](https://linux.die.net/man/1/strip) directly on
+**Prior to Rust 1.59**, run [`strip`](https://linux.die.net/man/1/strip) directly on
 the `.elf` file instead:
 
 ```bash
