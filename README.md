@@ -30,24 +30,25 @@ $ cargo build --release
 # `strip` Symbols from Binary
 
 ![OS: *nix](https://img.shields.io/badge/OS-*nix-brightgreen.svg)
+![Minimum Rust: 1.59](https://img.shields.io/badge/Minimum%20Rust%20Version-1.59-brightgreen.svg)
 
 By default on Linux and macOS, symbol information is included in the compiled `.elf` file. This
 information is not needed to properly execute the binary.
-To remove this, run [`strip`](https://linux.die.net/man/1/strip) on the `.elf` file:
 
-```bash
-$ strip target/release/min-sized-rust
-```
-
-[Cargo has `strip` functionality built in](https://doc.rust-lang.org/cargo/reference/profiles.html#strip):
-
-![Minimum Rust: 1.59](https://img.shields.io/badge/Minimum%20Rust%20Version-1.59-brightgreen.svg)
-
+Cargo can be configured to
+[automatically `strip` binaries](https://doc.rust-lang.org/cargo/reference/profiles.html#strip).
 Modify `Cargo.toml` in this way:
 
 ```toml
 [profile.release]
 strip = true  # Automatically strip symbols from the binary.
+```
+
+On Rust versions older than 1.59, run [`strip`](https://linux.die.net/man/1/strip) directly on
+the `.elf` file instead:
+
+```bash
+$ strip target/release/min-sized-rust
 ```
 
 # Optimize For Size
