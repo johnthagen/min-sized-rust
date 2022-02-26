@@ -185,7 +185,7 @@ host: x86_64-apple-darwin
 $ cargo +nightly build -Z build-std=std,panic_abort --target x86_64-apple-darwin --release
 ```
 
-Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 51KB.
+On macOS, the final stripped binary size is reduced to 51KB.
 
 # Remove `panic` String Formatting with `panic_immediate_abort`
 
@@ -205,7 +205,7 @@ $ cargo +nightly build -Z build-std=std,panic_abort -Z build-std-features=panic_
     --target x86_64-apple-darwin --release
 ```
 
-Remember to `strip` the resulting executable. On macOS, the final binary size is reduced to 30KB.
+On macOS, the final stripped binary size is reduced to 30KB.
 
 # Remove `core::fmt` with `#![no_main]` and Careful Usage of `libstd`
 
