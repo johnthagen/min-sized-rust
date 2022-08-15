@@ -16,10 +16,8 @@ jobs:
         with:
           toolchain: ${{ matrix.toolchain }}
           override: true
-      - uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --release --all-features
+      - name: Build
+        run: cargo build --release --all-features
   no_std:
     name: no_std
     strategy:
