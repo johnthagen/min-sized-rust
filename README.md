@@ -325,6 +325,7 @@ create minimum sized Docker containers that run Rust binaries.
 - [Making a really tiny WebAssembly graphics demos - 2019][tiny-webassembly-graphics]
 - [Reducing the size of the Rust GStreamer plugin - 2020][gstreamer-plugin]
 - [Tighten rust’s belt: shrinking embedded Rust binaries - 2022][tighten-rusts-belt]
+- [Avoiding allocations in Rust to shrink Wasm modules - 2022][avoiding-allocations-shrink-wasm]
 - [`min-sized-rust-windows`][min-sized-rust-windows] - Windows-specific tricks to reduce binary size
 
 [why-rust-binary-large]: https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html
@@ -333,6 +334,7 @@ create minimum sized Docker containers that run Rust binaries.
 [tiny-webassembly-graphics]: https://cliffle.com/blog/bare-metal-wasm/
 [gstreamer-plugin]: https://www.collabora.com/news-and-blog/blog/2020/04/28/reducing-size-rust-gstreamer-plugin/
 [tighten-rusts-belt]: https://dl.acm.org/doi/abs/10.1145/3519941.3535075
+[avoiding-allocations-shrink-wasm]: https://nickb.dev/blog/avoiding-allocations-in-rust-to-shrink-wasm-modules/
 [min-sized-rust-windows]: https://github.com/mcountryman/min-sized-rust-windows
 
 <!-- Badges -->
