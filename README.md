@@ -319,6 +319,7 @@ create minimum sized Docker containers that run Rust binaries.
 
 # References
 
+- [151-byte static Linux binary in Rust - 2015][151-byte-static-linux-binary]
 - [Why is a Rust executable large? - 2016][why-rust-binary-large]
 - [Freestanding Rust Binary - 2018](https://os.phil-opp.com/freestanding-rust-binary/)
 - [Tiny Rocket - 2018](https://jamesmunns.com/blog/tinyrocket/)
@@ -331,6 +332,7 @@ create minimum sized Docker containers that run Rust binaries.
 - [A very small Rust binary indeed - 2022][a-very-small-rust-binary]
 - [`min-sized-rust-windows`][min-sized-rust-windows] - Windows-specific tricks to reduce binary size
 
+[151-byte-static-linux-binary]: https://mainisusuallyafunction.blogspot.com/2015/01/151-byte-static-linux-binary-in-rust.html
 [why-rust-binary-large]: https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html
 [fmt-unreasonably-expensive]: https://jamesmunns.com/blog/fmt-unreasonably-expensive/
 [tiny-windows-exe]: https://www.codeslow.com/2019/12/tiny-windows-executable-in-rust.html
