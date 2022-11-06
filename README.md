@@ -310,7 +310,7 @@ heuristic-based anti-virus software because malware often uses UPX.
 
 Sometimes it's advantageous to deploy Rust into containers 
 (e.g. [Docker](https://www.docker.com/)). There are several great existing resources to help 
-create minimum sized Docker containers that run Rust binaries.
+create minimum sized container images that run Rust binaries.
 
 - [mini-docker-rust](https://github.com/kpcyrd/mini-docker-rust)
 - [rust-musl-builder](https://github.com/emk/rust-musl-builder)
