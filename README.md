@@ -327,6 +327,7 @@ create minimum sized container images that run Rust binaries.
 - [Tiny Windows executable in Rust - 2019][tiny-windows-exe]
 - [Making a really tiny WebAssembly graphics demos - 2019][tiny-webassembly-graphics]
 - [Reducing the size of the Rust GStreamer plugin - 2020][gstreamer-plugin]
+- [Optimizing Rust Binary Size - 2020][optimizing-rust-binary-size]
 - [Tighten rust’s belt: shrinking embedded Rust binaries - 2022][tighten-rusts-belt]
 - [Avoiding allocations in Rust to shrink Wasm modules - 2022][avoiding-allocations-shrink-wasm]
 - [A very small Rust binary indeed - 2022][a-very-small-rust-binary]
@@ -338,6 +339,7 @@ create minimum sized container images that run Rust binaries.
 [tiny-windows-exe]: https://www.codeslow.com/2019/12/tiny-windows-executable-in-rust.html
 [tiny-webassembly-graphics]: https://cliffle.com/blog/bare-metal-wasm/
 [gstreamer-plugin]: https://www.collabora.com/news-and-blog/blog/2020/04/28/reducing-size-rust-gstreamer-plugin/
+[optimizing-rust-binary-size]: https://arusahni.net/blog/2020/03/optimizing-rust-binary-size.html
 [tighten-rusts-belt]: https://dl.acm.org/doi/abs/10.1145/3519941.3535075
 [avoiding-allocations-shrink-wasm]: https://nickb.dev/blog/avoiding-allocations-in-rust-to-shrink-wasm-modules/
 [a-very-small-rust-binary]: https://darkcoding.net/software/a-very-small-rust-binary-indeed/
