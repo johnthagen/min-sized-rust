@@ -2,6 +2,7 @@
 name = "min-sized-no_std"
 version = "0.1.0"
 authors = ["johnthagen <johnthagen@gmail.com>"]
+edition = "2021"
 license = "MIT"
 
 [dependencies]

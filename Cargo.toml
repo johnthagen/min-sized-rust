@@ -2,6 +2,7 @@
 name = "min-sized-rust"
 version = "0.1.0"
 authors = ["johnthagen <johnthagen@gmail.com>"]
+edition = "2021"
 license-file = "LICENSE.txt"
 
 [dependencies]
