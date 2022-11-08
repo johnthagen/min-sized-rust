@@ -2,7 +2,7 @@
 name = "no_main"
 version = "0.1.0"
 authors = ["johnthagen <johnthagen@gmail.com>", "Vitaly '_Vi' Shukela <vi0oss@gmail.com>"]
-edition = "2018"
+edition = "2021"
 license = "MIT"
 
 [dependencies]
