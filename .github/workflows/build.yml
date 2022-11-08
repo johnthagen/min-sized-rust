@@ -7,9 +7,8 @@ jobs:
     name: Default
     strategy:
       matrix:
-        # TODO: Fix libc build issues on macos-latest, which is now macos-12.
-        platform: [ ubuntu-latest, macos-11, windows-latest ]
-        toolchain: [ stable, 1.28.0, nightly ]
+        platform: [ ubuntu-latest, macos-latest, windows-latest ]
+        toolchain: [ stable, nightly ]
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v3
@@ -22,8 +21,8 @@ jobs:
     name: no_std
     strategy:
       matrix:
-        platform: [ ubuntu-latest, macos-11 ]
-        toolchain: [ stable, 1.30.0, nightly ]
+        platform: [ ubuntu-latest, macos-latest ]
+        toolchain: [ stable, nightly ]
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v3
