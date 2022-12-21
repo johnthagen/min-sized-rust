@@ -312,8 +312,8 @@ Sometimes it's advantageous to deploy Rust into containers
 (e.g. [Docker](https://www.docker.com/)). There are several great existing resources to help 
 create minimum sized container images that run Rust binaries.
 
+- [Official `rust:alpine` image](https://hub.docker.com/_/rust)
 - [mini-docker-rust](https://github.com/kpcyrd/mini-docker-rust)
-- [rust-musl-builder](https://github.com/emk/rust-musl-builder)
 - [muslrust](https://github.com/clux/muslrust)
 - [docker-slim](https://github.com/docker-slim/docker-slim) - Minify Docker images
 
