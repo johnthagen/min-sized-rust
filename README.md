@@ -4,9 +4,6 @@
 
 [github-actions-badge]: https://github.com/johnthagen/min-sized-rust/workflows/build/badge.svg
 
-> To help this project reach more users, consider upvoting the 
-> [`min-sized-rust` Stack Overflow answer](https://stackoverflow.com/a/54842093/1398841).
-
 This repository demonstrates how to minimize the size of a Rust binary.
 
 By default, Rust optimizes for execution speed, compilation speed, and ease of debugging
