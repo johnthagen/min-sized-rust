@@ -341,7 +341,3 @@ create minimum sized container images that run Rust binaries.
 [avoiding-allocations-shrink-wasm]: https://nickb.dev/blog/avoiding-allocations-in-rust-to-shrink-wasm-modules/
 [a-very-small-rust-binary]: https://darkcoding.net/software/a-very-small-rust-binary-indeed/
 [min-sized-rust-windows]: https://github.com/mcountryman/min-sized-rust-windows
-
-<!-- Badges -->
-[travis-build-status]: https://travis-ci.com/johnthagen/min-sized-rust
-[travis-build-status-svg]: https://travis-ci.com/johnthagen/min-sized-rust.svg?branch=master
