@@ -137,6 +137,22 @@ Enable this in `Cargo.toml`:
 panic = "abort"
 ```
 
+# Remove Location Details
+
+![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
+
+By default, Rust includes file, line, and column information for `panic!()` and `[track_caller]`
+to provide more useful traceback information. This information requires space in the binary and
+thus increases the size of the compiled binaries.
+
+To remove this file, line, and column information, use the unstable
+[`rustc` `-Zlocation-detail`](https://github.com/rust-lang/rfcs/blob/master/text/2091-inline-semantic.md#location-detail-control)
+flag:
+
+```bash
+$ RUSTFLAGS="-Zlocation-detail=none" cargo +nightly build --release
+```
+
 # Optimize `libstd` with `build-std`
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
@@ -180,7 +196,7 @@ host: x86_64-apple-darwin
 # Use that target triple when building with build-std.
 # Add the =std,panic_abort to the option to make panic = "abort" Cargo.toml option work.
 # See: https://github.com/rust-lang/wg-cargo-std-aware/issues/56
-$ cargo +nightly build -Z build-std=std,panic_abort --target x86_64-apple-darwin --release
+$ RUSTFLAGS="-Zlocation-detail=none" cargo +nightly build -Z build-std=std,panic_abort --target x86_64-apple-darwin --release
 ```
 
 On macOS, the final stripped binary size is reduced to 51KB.
