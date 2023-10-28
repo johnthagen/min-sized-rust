@@ -354,6 +354,7 @@ create minimum sized container images that run Rust binaries.
 - [Avoiding allocations in Rust to shrink Wasm modules - 2022][avoiding-allocations-shrink-wasm]
 - [A very small Rust binary indeed - 2022][a-very-small-rust-binary]
 - [`min-sized-rust-windows`][min-sized-rust-windows] - Windows-specific tricks to reduce binary size
+- [Shrinking `.wasm` Code Size][shrinking-wasm-code-size]
 
 [151-byte-static-linux-binary]: https://mainisusuallyafunction.blogspot.com/2015/01/151-byte-static-linux-binary-in-rust.html
 [why-rust-binary-large]: https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html
@@ -368,3 +369,4 @@ create minimum sized container images that run Rust binaries.
 [avoiding-allocations-shrink-wasm]: https://nickb.dev/blog/avoiding-allocations-in-rust-to-shrink-wasm-modules/
 [a-very-small-rust-binary]: https://darkcoding.net/software/a-very-small-rust-binary-indeed/
 [min-sized-rust-windows]: https://github.com/mcountryman/min-sized-rust-windows
+[shrinking-wasm-code-size]: https://rustwasm.github.io/docs/book/reference/code-size.html
