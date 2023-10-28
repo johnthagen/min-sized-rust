@@ -348,6 +348,7 @@ create minimum sized container images that run Rust binaries.
 - [Making a really tiny WebAssembly graphics demos - 2019][tiny-webassembly-graphics]
 - [Reducing the size of the Rust GStreamer plugin - 2020][gstreamer-plugin]
 - [Optimizing Rust Binary Size - 2020][optimizing-rust-binary-size]
+- [Minimizing Mender-Rust - 2020][minimizing-mender-rust]
 - [Optimize Rust binaries size with cargo and Semver - 2021][optimize-with-cargo-and-semver]
 - [Tighten rust’s belt: shrinking embedded Rust binaries - 2022][tighten-rusts-belt]
 - [Avoiding allocations in Rust to shrink Wasm modules - 2022][avoiding-allocations-shrink-wasm]
@@ -361,6 +362,7 @@ create minimum sized container images that run Rust binaries.
 [tiny-webassembly-graphics]: https://cliffle.com/blog/bare-metal-wasm/
 [gstreamer-plugin]: https://www.collabora.com/news-and-blog/blog/2020/04/28/reducing-size-rust-gstreamer-plugin/
 [optimizing-rust-binary-size]: https://arusahni.net/blog/2020/03/optimizing-rust-binary-size.html
+[minimizing-mender-rust]: https://mender.io/blog/building-mender-rust-in-yocto-and-minimizing-the-binary-size
 [optimize-with-cargo-and-semver]: https://oknozor.github.io/blog/optimize-rust-binary-size/
 [tighten-rusts-belt]: https://dl.acm.org/doi/abs/10.1145/3519941.3535075
 [avoiding-allocations-shrink-wasm]: https://nickb.dev/blog/avoiding-allocations-in-rust-to-shrink-wasm-modules/
