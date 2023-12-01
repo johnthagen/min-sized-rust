@@ -370,3 +370,9 @@ create minimum sized container images that run Rust binaries.
 [a-very-small-rust-binary]: https://darkcoding.net/software/a-very-small-rust-binary-indeed/
 [min-sized-rust-windows]: https://github.com/mcountryman/min-sized-rust-windows
 [shrinking-wasm-code-size]: https://rustwasm.github.io/docs/book/reference/code-size.html
+
+# Organizations
+
+- [wg-binary-size]: Working group for improving the size of Rust programs and libraries.
+
+[wg-binary-size]: https://github.com/rust-lang/wg-binary-size
