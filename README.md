@@ -51,6 +51,8 @@ $ strip target/release/min-sized-rust
 
 # Optimize For Size
 
+Until early 2024, the default of Cargo was to put the debuginfo of the Rust standard library into your program. This default behaviour has been changed in future Cargo releases. The patch author from [Binary size working group](https://github.com/rust-lang/wg-binary-size) explains [which defaults do exist in Cargo](https://kobzol.github.io/rust/cargo/2024/01/23/making-rust-binaries-smaller-by-default.html).
+
 ![Minimum Rust: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
 
 [Cargo defaults its optimization level to `3` for release builds][cargo-profile],
@@ -131,7 +133,7 @@ codegen-units = 1
 
 > **Note**: Up to this point, the features discussed to reduce binary size did not have an
 impact on the behaviour of the program (only its execution speed). This feature does
-have an impact on behavior.
+have an impact on behaviour.
 
 [By default][cargo-profile], when Rust code encounters a situation when it must call `panic!()`, 
 it unwinds the stack and produces a helpful backtrace. The unwinding code, however, does require 
@@ -372,6 +374,7 @@ create minimum sized container images that run Rust binaries.
 [dark-side-of-inlining]: https://nickb.dev/blog/the-dark-side-of-inlining-and-monomorphization/
 [min-sized-rust-windows]: https://github.com/mcountryman/min-sized-rust-windows
 [shrinking-wasm-code-size]: https://rustwasm.github.io/docs/book/reference/code-size.html
+[rust-binaries-smaller-default]: https://kobzol.github.io/rust/cargo/2024/01/23/making-rust-binaries-smaller-by-default.html
 
 # Organizations
 
