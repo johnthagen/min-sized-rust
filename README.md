@@ -354,6 +354,7 @@ create minimum sized container images that run Rust binaries.
 - [Avoiding allocations in Rust to shrink Wasm modules - 2022][avoiding-allocations-shrink-wasm]
 - [A very small Rust binary indeed - 2022][a-very-small-rust-binary]
 - [The dark side of inlining and monomorphization - 2023][dark-side-of-inlining]
+- [Making Rust binaries smaller by default - 2024][making-rust-binaries-smaller-by-default]
 - [`min-sized-rust-windows`][min-sized-rust-windows] - Windows-specific tricks to reduce binary size
 - [Shrinking `.wasm` Code Size][shrinking-wasm-code-size]
 
@@ -370,6 +371,7 @@ create minimum sized container images that run Rust binaries.
 [avoiding-allocations-shrink-wasm]: https://nickb.dev/blog/avoiding-allocations-in-rust-to-shrink-wasm-modules/
 [a-very-small-rust-binary]: https://darkcoding.net/software/a-very-small-rust-binary-indeed/
 [dark-side-of-inlining]: https://nickb.dev/blog/the-dark-side-of-inlining-and-monomorphization/
+[making-rust-binaries-smaller-by-default]: https://kobzol.github.io/rust/cargo/2024/01/23/making-rust-binaries-smaller-by-default.html
 [min-sized-rust-windows]: https://github.com/mcountryman/min-sized-rust-windows
 [shrinking-wasm-code-size]: https://rustwasm.github.io/docs/book/reference/code-size.html
 
