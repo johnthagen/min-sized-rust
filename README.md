@@ -196,7 +196,7 @@ $ rustup component add rust-src --toolchain nightly
 Build using `build-std`:
 
 ```bash
-# Find your host's target triple. 
+# Find your host's target triple.
 $ rustc -vV
 ...
 host: x86_64-apple-darwin
