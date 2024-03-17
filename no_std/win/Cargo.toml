@@ -1,0 +1,21 @@
+[package]
+name = "no_std_win"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+windows-sys = { version = "0.52.0", features = [
+    "Win32_Foundation",
+    "Win32_System_Threading", # for `ExitProcess`
+    "Win32_System_Console", # for `WriteConsoleA` etc.
+] }
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+opt-level = "z"     # Optimize for size.
+lto = true          # Enable Link Time Optimization
+codegen-units = 1   # Reduce number of codegen units to increase optimizations.
+panic = "abort"     # Abort on panic
+strip = true        # Automatically strip symbols from the binary.

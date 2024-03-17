@@ -265,7 +265,7 @@ On macOS, the final stripped binary is reduced to 8KB.
 
 ![Minimum Rust: 1.30](https://img.shields.io/badge/Minimum%20Rust%20Version-1.30-brightgreen.svg)
 
-> Example project is located in the [`no_std`](no_std) folder.
+> Example projects are located in the [`no_std`](no_std) folder.
 
 Up until this point, our application was using the Rust standard library, `libstd`. `libstd`
 provides many convenient, well tested cross-platform APIs and data types. But if a user wants

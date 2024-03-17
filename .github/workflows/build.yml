@@ -30,7 +30,21 @@ jobs:
         with:
           toolchain: ${{ matrix.toolchain }}
       - name: Build
-        working-directory: no_std
+        working-directory: no_std/nix
+        run: cargo build --release --all-features
+  no_std_win:
+    name: no_std-win
+    strategy:
+      matrix:
+        toolchain: [ stable, nightly ]
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+      - name: Build
+        working-directory: no_std/win
         run: cargo build --release --all-features
   no_main_win:
     name: no_main-win
