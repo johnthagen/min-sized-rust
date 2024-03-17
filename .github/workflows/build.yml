@@ -33,7 +33,7 @@ jobs:
         working-directory: no_std
         run: cargo build --release --all-features
   no_main_win:
-    name: no_std_win
+    name: no_main-win
     strategy:
       matrix:
         toolchain: [ stable, nightly ]
