@@ -233,7 +233,7 @@ On macOS, the final stripped binary size is reduced to 30KB.
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
-> Example project is located in the [`no_main`](no_main/nix) folder.
+> Example projects are located in the [`no_main`](no_main) folder.
 
 Up until this point, we haven't restricted what utilities we used from `libstd`. In this section
 we will restrict our usage of `libstd` in order to reduce binary size further.
