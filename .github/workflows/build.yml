@@ -44,6 +44,7 @@ jobs:
         with:
           toolchain: ${{ matrix.toolchain }}
       - name: Build
+        working-directory: no_main/win
         run: cargo build --release --all-features
   build_std:
     name: build-std
