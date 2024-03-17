@@ -11,7 +11,7 @@ jobs:
         toolchain: [ stable, nightly ]
     runs-on: ${{ matrix.platform }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ matrix.toolchain }}
@@ -25,21 +25,34 @@ jobs:
         toolchain: [ stable, nightly ]
     runs-on: ${{ matrix.platform }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ matrix.toolchain }}
       - name: Build
         working-directory: no_std
         run: cargo build --release --all-features
+  no_main_win:
+    name: no_std_win
+    strategy:
+      matrix:
+        toolchain: [ stable, nightly ]
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+      - name: Build
+        run: cargo build --release --all-features
   build_std:
     name: build-std
     strategy:
       matrix:
-        project_dir: [ build_std, no_main ]
+        project_dir: [ build_std, no_main/nix ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: nightly
