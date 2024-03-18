@@ -42,6 +42,18 @@ Modify `Cargo.toml` in this way:
 strip = true  # Automatically strip symbols from the binary.
 ```
 
+> [!WARNING]
+> Removing debug symbols will prevent some features like backtraces from being properly displayed
+
+> [!NOTE]
+> In some settings, you want to strip symbols but keep them around for debugging purposes.  You
+> can do this by running the following two commands:
+>
+> ```
+> objcopy --only-keep-debug target/release/min-sized-rust min-sized-rust.dbg
+> objcopy --strip-debug --strip-unneeded --remove-section=".gnu_debuglink" --add-gnu-debuglink=min-sized-rust.dbg target/release/min-sized-rust
+> ```
+
 **Prior to Rust 1.59**, run [`strip`](https://linux.die.net/man/1/strip) directly on
 the `.elf` file instead:
 
