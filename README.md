@@ -209,10 +209,11 @@ $ RUSTFLAGS="-Zlocation-detail=none" cargo +nightly build -Z build-std=std,panic
   --target x86_64-apple-darwin --release
 ```
 
-On macOS, the final stripped binary size is reduced to 51KB.
+The `optimize_for_size` flag provides a hint to `libstd` that it should try to use algorithms
+optimized for binary size. More information about it can be found in the 
+[tracking issue](https://github.com/rust-lang/rust/issues/125612).
 
-The `optimize_for_size` flag provides a hint to libstd that it should try to use algorithms optimized
-for binary size. More information about it can be found [here](https://github.com/rust-lang/rust/issues/125612).
+On macOS, the final stripped binary size is reduced to 51KB.
 
 # Remove `panic` String Formatting with `panic_immediate_abort`
 
