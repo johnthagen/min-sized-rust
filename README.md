@@ -205,7 +205,7 @@ host: x86_64-apple-darwin
 # Add the =std,panic_abort to the option to make panic = "abort" Cargo.toml option work.
 # See: https://github.com/rust-lang/wg-cargo-std-aware/issues/56
 $ RUSTFLAGS="-Zlocation-detail=none" cargo +nightly build -Z build-std=std,panic_abort \
-  -Z build-std-features="std/optimize_for_size" \
+  -Z build-std-features="optimize_for_size" \
   --target x86_64-apple-darwin --release
 ```
 
