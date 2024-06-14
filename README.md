@@ -204,10 +204,15 @@ host: x86_64-apple-darwin
 # Use that target triple when building with build-std.
 # Add the =std,panic_abort to the option to make panic = "abort" Cargo.toml option work.
 # See: https://github.com/rust-lang/wg-cargo-std-aware/issues/56
-$ RUSTFLAGS="-Zlocation-detail=none" cargo +nightly build -Z build-std=std,panic_abort --target x86_64-apple-darwin --release
+$ RUSTFLAGS="-Zlocation-detail=none" cargo +nightly build -Z build-std=std,panic_abort \
+  -Z build-std-features="std/optimize_for_size" \
+  --target x86_64-apple-darwin --release
 ```
 
 On macOS, the final stripped binary size is reduced to 51KB.
+
+The `optimize_for_size` flag provides a hint to libstd that it should try to use algorithms optimized
+for binary size. More information about it can be found [here](https://github.com/rust-lang/rust/issues/125612).
 
 # Remove `panic` String Formatting with `panic_immediate_abort`
 
