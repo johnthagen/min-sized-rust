@@ -341,6 +341,8 @@ create minimum sized container images that run Rust binaries.
 - [mini-docker-rust](https://github.com/kpcyrd/mini-docker-rust)
 - [muslrust](https://github.com/clux/muslrust)
 - [docker-slim](https://github.com/docker-slim/docker-slim) - Minify Docker images
+- [dive](https://github.com/wagoodman/dive) - A tool for exploring a container image and
+  discovering ways to shrink the size of the image.
 
 # References
 
