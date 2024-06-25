@@ -69,6 +69,7 @@ Note that in some cases the `"s"` level may result in a smaller binary than `"z"
 the
 [`opt-level` documentation](https://doc.rust-lang.org/cargo/reference/profiles.html#opt-level):
 
+> [!TIP]
 > It is recommended to experiment with different levels to find the right balance for your project.
 > There may be surprising results, such as ... the `"s"` and `"z"` levels not being necessarily
 > smaller.
@@ -129,7 +130,8 @@ codegen-units = 1
 
 ![Minimum Rust: 1.10](https://img.shields.io/badge/Minimum%20Rust%20Version-1.10-brightgreen.svg)
 
-> **Note**: Up to this point, the features discussed to reduce binary size did not have an
+> [!IMPORTANT]
+> Up to this point, the features discussed to reduce binary size did not have an
 > impact on the behaviour of the program (only its execution speed). This feature does
 > have an impact on behavior.
 
@@ -165,9 +167,11 @@ $ RUSTFLAGS="-Zlocation-detail=none" cargo +nightly build --release
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
-> **Note**: See also [Xargo](https://github.com/japaric/xargo), the predecessor to `build-std`.
+> [!NOTE]
+> See also [Xargo](https://github.com/japaric/xargo), the predecessor to `build-std`.
 [Xargo is currently in maintenance status](https://github.com/japaric/xargo/issues/193).
 
+> [!NOTE]
 > Example project is located in the [`build_std`](build_std) folder.
 
 Rust ships pre-built copies of the standard library (`libstd`) with its toolchains. This means
@@ -239,6 +243,7 @@ On macOS, the final stripped binary size is reduced to 30KB.
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
+> [!NOTE]
 > Example projects are located in the [`no_main`](no_main) folder.
 
 Up until this point, we haven't restricted what utilities we used from `libstd`. In this section
@@ -271,6 +276,7 @@ On macOS, the final stripped binary is reduced to 8KB.
 
 ![Minimum Rust: 1.30](https://img.shields.io/badge/Minimum%20Rust%20Version-1.30-brightgreen.svg)
 
+> [!NOTE]
 > Example projects are located in the [`no_std`](no_std) folder.
 
 Up until this point, our application was using the Rust standard library, `libstd`. `libstd`
@@ -307,8 +313,9 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
 
 # Compress the binary
 
-Up until this point, all size-reducing techniques were Rust-specific. This section describes
-a language-agnostic binary packing tool that is an option to reduce binary size further.
+> [!NOTE]
+> Up until this point, all size-reducing techniques were Rust-specific. This section describes
+> a language-agnostic binary packing tool that is an option to reduce binary size further.
 
 [UPX](https://github.com/upx/upx) is a powerful tool for creating a self-contained, compressed
 binary with no addition runtime requirements. It claims to typically reduce binary size by 50-70%,
@@ -318,8 +325,9 @@ but the actual result depends on your executable.
 $ upx --best --lzma target/release/min-sized-rust
 ```
 
-It should be noted that there have been times that UPX-packed binaries have flagged
-heuristic-based anti-virus software because malware often uses UPX.
+> [!WARNING]
+> There have been times that UPX-packed binaries have flagged heuristic-based antivirus software
+> because malware often uses UPX.
 
 # Tools
 
