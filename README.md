@@ -65,11 +65,10 @@ which optimizes the binary for **speed**. To instruct Cargo to optimize for mini
 opt-level = "z"  # Optimize for size.
 ```
 
-Note that in some cases the `"s"` level may result in a smaller binary than `"z"`, as explained in
-the
-[`opt-level` documentation](https://doc.rust-lang.org/cargo/reference/profiles.html#opt-level):
-
-> [!TIP]
+> [!NOTE]
+> In some cases the `"s"` level may result in a smaller binary than `"z"`, as explained in the
+> [`opt-level` documentation](https://doc.rust-lang.org/cargo/reference/profiles.html#opt-level):
+> 
 > It is recommended to experiment with different levels to find the right balance for your project.
 > There may be surprising results, such as ... the `"s"` and `"z"` levels not being necessarily
 > smaller.
