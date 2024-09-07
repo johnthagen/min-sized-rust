@@ -163,6 +163,19 @@ flag:
 $ RUSTFLAGS="-Zlocation-detail=none" cargo +nightly build --release
 ```
 
+# Remove `fmt::Debug`
+
+![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
+
+With the [`-Zfmt-debug`](https://doc.rust-lang.org/nightly/unstable-book/compiler-flags/fmt-debug.html) flag you can turn `#[derive(Debug)]`
+and [`{:?}`](https://doc.rust-lang.org/stable/std/fmt/trait.Debug.html) formatting into no-ops.
+This will ruin output of `dbg!()`, `assert!()`, `unwrap()`, etc., and may break code that unwisely relies on
+the debug formatting, but it will remove derived `fmt` functions and their strings.
+
+```bash
+$ RUSTFLAGS="-Zfmt-debug=none" cargo +nightly build --release
+```
+
 # Optimize `libstd` with `build-std`
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
