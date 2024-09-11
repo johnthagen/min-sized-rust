@@ -89,31 +89,6 @@ Enable LTO in `Cargo.toml`:
 lto = true
 ```
 
-# Remove Jemalloc
-
-![Minimum Rust: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
-![Maximum Rust: 1.31](https://img.shields.io/badge/Maximum%20Rust%20Version-1.31-brightgreen.svg)
-
-> [!IMPORTANT]
-> As of Rust 1.32,
-> [`jemalloc` is removed by default](https://blog.rust-lang.org/2019/01/17/Rust-1.32.0.html).
-> **If using Rust 1.32 or newer, no action is needed to reduce binary size regarding this
-> feature**.
-
-**Prior to Rust 1.32**, to improve performance on some platforms Rust bundled
-[jemalloc](https://github.com/jemalloc/jemalloc), an allocator that often
-outperforms the default system allocator. Bundling jemalloc added around 200KB
-to the resulting binary, however.
-
-To remove `jemalloc` on Rust 1.28 - Rust 1.31, add this code to the top of `main.rs`:
-
-```rust
-use std::alloc::System;
-
-#[global_allocator]
-static A: System = System;
-```
-
 # Reduce Parallel Code Generation Units to Increase Optimization
 
 [By default][cargo-profile], Cargo specifies 16 parallel codegen units for release builds.
@@ -427,3 +402,33 @@ create minimum sized container images that run Rust binaries.
 - [wg-binary-size]: Working group for improving the size of Rust programs and libraries.
 
 [wg-binary-size]: https://github.com/rust-lang/wg-binary-size
+
+# Legacy Techniques
+
+The following techniques are no longer relevant for modern Rust development, but may apply to older
+versions of Rust and are maintained for historical purposes.
+
+## Remove Jemalloc
+
+![Minimum Rust: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
+![Maximum Rust: 1.31](https://img.shields.io/badge/Maximum%20Rust%20Version-1.31-brightgreen.svg)
+
+> [!IMPORTANT]
+> As of Rust 1.32,
+> [`jemalloc` is removed by default](https://blog.rust-lang.org/2019/01/17/Rust-1.32.0.html).
+> **If using Rust 1.32 or newer, no action is needed to reduce binary size regarding this
+> feature**.
+
+**Prior to Rust 1.32**, to improve performance on some platforms Rust bundled
+[jemalloc](https://github.com/jemalloc/jemalloc), an allocator that often
+outperforms the default system allocator. Bundling jemalloc added around 200KB
+to the resulting binary, however.
+
+To remove `jemalloc` on Rust 1.28 - Rust 1.31, add this code to the top of `main.rs`:
+
+```rust
+use std::alloc::System;
+
+#[global_allocator]
+static A: System = System;
+```
