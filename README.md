@@ -361,6 +361,7 @@ create minimum sized container images that run Rust binaries.
 - [The dark side of inlining and monomorphization - 2023][dark-side-of-inlining]
 - [Making Rust binaries smaller by default - 2024][making-rust-binaries-smaller-by-default]
 - [Tock Binary Size - 2024][tock-binary-size]
+- [Trimming down a rust binary in half - 2024][trimming-down-a-rust-binary-in-half]
 - [`min-sized-rust-windows`][min-sized-rust-windows] - Windows-specific tricks to reduce binary size
 - [Shrinking `.wasm` Code Size][shrinking-wasm-code-size]
 
@@ -393,6 +394,8 @@ create minimum sized container images that run Rust binaries.
 [making-rust-binaries-smaller-by-default]: https://kobzol.github.io/rust/cargo/2024/01/23/making-rust-binaries-smaller-by-default.html
 
 [tock-binary-size]: https://tweedegolf.nl/en/blog/126/tock-binary-size
+
+[trimming-down-a-rust-binary-in-half]: https://tech.dreamleaves.org/trimming-down-a-rust-binary-in-half/
 
 [min-sized-rust-windows]: https://github.com/mcountryman/min-sized-rust-windows
 
