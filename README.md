@@ -362,6 +362,7 @@ create minimum sized container images that run Rust binaries.
 - [Making Rust binaries smaller by default - 2024][making-rust-binaries-smaller-by-default]
 - [Tock Binary Size - 2024][tock-binary-size]
 - [Trimming down a rust binary in half - 2024][trimming-down-a-rust-binary-in-half]
+- [Reducing WASM binary size: lessons from building a web terminal - 2024][reducing-wasm-binary-size]
 - [`min-sized-rust-windows`][min-sized-rust-windows] - Windows-specific tricks to reduce binary size
 - [Shrinking `.wasm` Code Size][shrinking-wasm-code-size]
 
@@ -396,6 +397,8 @@ create minimum sized container images that run Rust binaries.
 [tock-binary-size]: https://tweedegolf.nl/en/blog/126/tock-binary-size
 
 [trimming-down-a-rust-binary-in-half]: https://tech.dreamleaves.org/trimming-down-a-rust-binary-in-half/
+
+[reducing-wasm-binary-size]: https://www.warp.dev/blog/reducing-wasm-binary-size
 
 [min-sized-rust-windows]: https://github.com/mcountryman/min-sized-rust-windows
 
