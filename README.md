@@ -122,6 +122,22 @@ Enable this in `Cargo.toml`:
 panic = "abort"
 ```
 
+# (Un)Share Generics
+
+![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
+
+Currently Rust enables `-Zshare-generics` implicitly for opt-level `"s"` and `"z"`.
+Just like `"s"` vs `"z"`, this can sometimes be helpful and sometimes cause larger binaries.
+
+To avoid sharing generics, use the unstable
+`rustc` `-Zshare-generics` flag:
+flag:
+
+```bash
+$ RUSTFLAGS="-Zshare-generics=false" cargo +nightly build --release
+```
+
+
 # Remove Location Details
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
