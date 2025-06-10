@@ -89,6 +89,16 @@ Enable LTO in `Cargo.toml`:
 lto = true
 ```
 
+# Dynamic Linking: Why It Doesn't Work
+
+![Minimum Rust: 1.0](https://img.shields.io/badge/Minimum%20Rust%20Version-1.0-brightgreen.svg)
+
+Some might suggest using [`prefer-dynamic`](https://doc.rust-lang.org/rustc/codegen-options/index.html#prefer-dynamic) for smaller binaries, but this approach has critical limitations:
+
+- **No stable ABI** - binaries break between Rust versions
+- **Deployment complexity** - requires exact library matches
+- **Community consensus** - static linking preferred for reliability
+
 # Reduce Parallel Code Generation Units to Increase Optimization
 
 [By default][cargo-profile], Cargo specifies 16 parallel codegen units for release builds.
