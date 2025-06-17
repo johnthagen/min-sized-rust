@@ -334,6 +334,9 @@ $ upx --best --lzma target/release/min-sized-rust
 
 - [`cargo-bloat`](https://github.com/RazrFalcon/cargo-bloat) - Find out what takes most of the
   space in your executable.
+- [`cargo-llvm-lines`](https://github.com/dtolnay/cargo-llvm-lines) - Measure the number and size
+  of instantiations of each generic function, indicating which parts of your code offer the highest
+  leverage in improving compilation metrics.
 - [`cargo-unused-features`](https://github.com/TimonPost/cargo-unused-features) - Find and prune
   enabled but potentially unused feature flags from your project.
 - [`momo`](https://github.com/llogiq/momo) - `proc_macro` crate to help keeping the code footprint
