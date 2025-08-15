@@ -355,6 +355,7 @@ create minimum sized container images that run Rust binaries.
 - [docker-slim](https://github.com/docker-slim/docker-slim) - Minify Docker images
 - [dive](https://github.com/wagoodman/dive) - A tool for exploring a container image and
   discovering ways to shrink the size of the image.
+- [distroless](https://github.com/GoogleContainerTools/distroless) - 2MB base image to run statically linked Rust program
 
 # References
 
