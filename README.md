@@ -220,21 +220,21 @@ optimized for binary size. More information about it can be found in the
 
 On macOS, the final stripped binary size is reduced to 51KB.
 
-# Remove `panic` String Formatting with `panic_immediate_abort`
+# Remove `panic` String Formatting with `panic=immediate-abort`
 
 ![Minimum Rust: Nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-orange.svg)
 
 Even if `panic = "abort"` is specified in `Cargo.toml`, `rustc` will still include panic strings
 and formatting code in final binary by default.
-[An unstable `panic_immediate_abort` feature](https://github.com/rust-lang/rust/pull/55011)
+[An unstable `panic=immediate-abort` feature](https://github.com/rust-lang/rust/pull/146317)
 has been merged into the `nightly` `rustc` compiler to address this.
 
-To use this, repeat the instructions above to use `build-std`, but also pass the following
-[`-Z build-std-features=panic_immediate_abort`](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std-features)
-option.
+To use this, repeat the instructions above to use `build-std`, but also pass
+[`-Zunstable-options -Cpanic=immediate-abort`](https://doc.rust-lang.org/rustc/command-line-arguments.html#-z-set-unstable-options)
+to `rustc`.
 
 ```bash
-$ cargo +nightly build -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort \
+$ RUSTFLAGS="-Zunstable-options -Cpanic=immediate-abort" cargo +nightly build -Z build-std=std,panic_abort \
     --target x86_64-apple-darwin --release
 ```
 
@@ -252,7 +252,7 @@ we will restrict our usage of `libstd` in order to reduce binary size further.
 
 If you want an executable smaller than 20 kilobytes, Rust's string formatting code,
 [`core::fmt`](https://doc.rust-lang.org/core/fmt/index.html) must
-be removed. `panic_immediate_abort` only removes some usages of this code. There is a lot of other
+be removed. `panic=immediate-abort` only removes some usages of this code. There is a lot of other
 code that uses formatting in some cases. That includes Rust's "pre-main" code in `libstd`.
 
 By using a C entry point (by adding the `#![no_main]` attribute) , managing stdio manually, and
