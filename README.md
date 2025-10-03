@@ -230,11 +230,14 @@ and formatting code in final binary by default.
 has been merged into the `nightly` `rustc` compiler to address this.
 
 To use this, repeat the instructions above to use `build-std`, but also pass
-[`-Zunstable-options -Cpanic=immediate-abort`](https://doc.rust-lang.org/rustc/command-line-arguments.html#-z-set-unstable-options)
+[`-Zunstable-options -Cpanic=immediate-abort`](https://doc.rust-lang.org/rustc/command-line-arguments.html#-z-set-unstable-options) and
+[`-Z build-std-features=`](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std-features) (which will disable the default `backtrace` and `panic-unwind` features)
 to `rustc`.
 
 ```bash
-$ RUSTFLAGS="-Zunstable-options -Cpanic=immediate-abort" cargo +nightly build -Z build-std=std,panic_abort \
+$ RUSTFLAGS="-Zunstable-options -Cpanic=immediate-abort" cargo +nightly build \
+    -Z build-std=std,panic_abort \
+    -Z build-std-features= \
     --target x86_64-apple-darwin --release
 ```
 
